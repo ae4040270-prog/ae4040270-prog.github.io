@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>بن الحفناوي | خبراء القهوة</title>
   <meta name="description" content="بن الحفناوي - خبراء القهوة. تحميص يومي، طحن حسب الطلب. المقطم - الهضبة الوسطى." />
+  <meta name="theme-color" content="#0F3D2E" />
 
+  <!-- Optional performance hints -->
+  <link rel="preload" as="video" href="31383-385863273_medium.mp4" />
   <style>
     :root{
       --bg:#F6F1E6;
@@ -14,9 +18,15 @@
       --gold:#C9A227;
       --gold2:#E2C35A;
       --line:#D9CDBB;
-      --card: rgba(255,255,255,.60);
-      --shadow: 0 10px 25px rgba(0,0,0,.08);
-      --r:18px;
+
+      --glass: rgba(255,255,255,.60);
+      --glass2: rgba(255,255,255,.45);
+
+      --shadow: 0 18px 45px rgba(0,0,0,.10);
+      --shadow2: 0 10px 25px rgba(0,0,0,.08);
+
+      --r: 18px;
+      --r2: 24px;
     }
 
     *{box-sizing:border-box}
@@ -31,115 +41,204 @@
       line-height:1.75;
       overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 16px}
 
-    /* NAV */
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+    /* ====== NAV ====== */
     .nav{
       position:sticky; top:0; z-index:100;
-      background:rgba(246,241,230,.92);
-      backdrop-filter: blur(10px);
+      background: rgba(246,241,230,.86);
+      backdrop-filter: blur(12px);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
       padding:12px 0;
     }
     .brand{display:flex;align-items:center;gap:12px;min-width:220px}
-    .brand img{
-      height:52px;width:auto;border-radius:14px;background:#fff;
-      border:1px solid var(--line);padding:6px;box-shadow:var(--shadow);
+    .brand-logo{
+      height:54px;width:54px;
+      object-fit:cover;
+      border-radius:16px;
+      background:#fff;
+      padding:7px;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
     }
-    .brand .name{font-weight:900;font-size:16px}
-    .brand .sub{font-size:12px;color:var(--muted);margin-top:2px}
+    .brand-name{font-weight:900;font-size:16px;line-height:1.2}
+    .brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
+
     .badge{
       display:inline-flex;align-items:center;
       padding:4px 10px;border-radius:999px;
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      color:#1b160a;font-weight:900;font-size:12px;margin-inline-start:8px;
+      background: linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#1b160a;font-weight:900;font-size:12px;
+      margin-inline-start:8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
     }
-    .links{display:flex;gap:6px;flex-wrap:wrap}
+
+    .links{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
     .links a{
-      padding:9px 11px;border-radius:12px;color:var(--muted);
-      border:1px solid transparent;font-weight:700;
+      padding:9px 11px;border-radius:12px;
+      color:var(--muted);
+      border:1px solid transparent;
+      font-weight:800;
     }
-    .links a:hover{background:rgba(201,162,39,.10);border-color:var(--line);color:var(--text)}
+    .links a:hover{
+      background: rgba(201,162,39,.12);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
     .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
       padding:10px 14px;border-radius:14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.65);
-      font-weight:900;box-shadow:var(--shadow);
-      transition:transform .15s ease;
+      background: rgba(255,255,255,.72);
+      font-weight:900;
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease, filter .15s ease;
       cursor:pointer;
+      user-select:none;
     }
-    .btn:hover{transform:translateY(-1px)}
-    .btn.primary{border:0;background:linear-gradient(135deg,var(--text),#0A2F22);color:#fff}
-    .btn.gold{border:0;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1b160a}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.02)}
+    .btn.primary{
+      border:0;
+      background: linear-gradient(135deg,var(--text),#0A2F22);
+      color:#fff;
+    }
+    .btn.gold{
+      border:0;
+      background: linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#1b160a;
+    }
 
-    /* HERO */
+    /* ====== HERO ====== */
     .hero{
-      position:relative;height:88vh;min-height:560px;overflow:hidden;
+      position:relative;
+      height:88vh;
+      min-height:580px;
+      overflow:hidden;
       border-bottom:1px solid var(--line);
+      isolation:isolate;
     }
     .hero video{
-      position:absolute;inset:0;width:100%;height:100%;
-      object-fit:cover;filter:saturate(1.05) contrast(1.02);
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      filter: saturate(1.05) contrast(1.03);
+      transform: scale(1.02);
     }
     .hero::after{
-      content:"";position:absolute;inset:0;
+      content:"";
+      position:absolute; inset:0;
       background:
         radial-gradient(900px 520px at 20% 20%, rgba(0,0,0,.20), transparent 60%),
-        linear-gradient(to bottom, rgba(0,0,0,.58), rgba(0,0,0,.58));
+        linear-gradient(to bottom, rgba(0,0,0,.62), rgba(0,0,0,.62));
+      z-index:1;
     }
     .hero-content{
-      position:relative;z-index:2;height:100%;
-      display:flex;align-items:center;color:#fff;padding:24px 0;
+      position:relative; z-index:2;
+      height:100%;
+      display:flex;align-items:center;
+      padding: 26px 0;
+      color:#fff;
     }
     .hero-box{
-      width:min(720px,100%);
-      background:rgba(15,11,7,.26);
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:22px;padding:22px;
-      backdrop-filter: blur(10px);
-      box-shadow:0 24px 60px rgba(0,0,0,.30);
+      width:min(760px,100%);
+      margin-inline:auto;
+      text-align:center;
+      background: rgba(15,11,7,.26);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--r2);
+      padding: 22px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.32);
     }
+
     .pill{
-      display:inline-flex;align-items:center;
+      display:inline-flex;align-items:center;justify-content:center;
       padding:8px 12px;border-radius:999px;
       border:1px solid rgba(255,255,255,.20);
-      background:rgba(201,162,39,.12);
-      font-weight:800;font-size:13px;
+      background: rgba(201,162,39,.14);
+      font-weight:900;font-size:13px;
+      color:#fff;
     }
-    .hero-title{
-      margin:14px 0 10px;
-      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-      font-size:42px;line-height:1.15;font-weight:900;
-    }
-    .hero-title img{
-      height:56px;width:auto;border-radius:14px;
-      background:rgba(255,255,255,.10);
-      filter:drop-shadow(0 6px 14px rgba(0,0,0,.6));
-    }
-    .hero p{margin:0;font-size:16px;color:rgba(255,255,255,.92);max-width:65ch}
-    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .note{margin-top:10px;font-size:13px;color:rgba(255,255,255,.90)}
 
-    /* SECTIONS */
-    .section{padding:52px 0}
+    .hero-logo-wrap{
+      width: 116px;
+      height: 116px;
+      margin: 16px auto 12px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.20);
+      box-shadow: 0 22px 60px rgba(0,0,0,.30);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hero-logo{
+      width: 94px;
+      height: 94px;
+      object-fit: cover;
+      border-radius: 24px;
+      background:#fff;
+      padding: 7px;
+      border: 1px solid rgba(255,255,255,.35);
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.55));
+    }
+
+    .hero h1{
+      margin: 6px 0 10px;
+      font-size: 48px;
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin: 0 auto;
+      max-width: 68ch;
+      font-size: 16px;
+      color: rgba(255,255,255,.92);
+    }
+    .hero-cta{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .hero-meta{
+      margin-top:12px;
+      font-size:13px;
+      color: rgba(255,255,255,.90);
+    }
+
+    /* ====== SECTIONS ====== */
+    .section{padding:56px 0}
     .titlebar{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
       margin-bottom:14px;
     }
     .titlebar h2{margin:0;font-size:24px}
     .titlebar p{margin:0;color:var(--muted)}
     .kicker{
-      display:inline-block;font-weight:900;color:#1b160a;
-      background:rgba(201,162,39,.18);
-      border:1px solid var(--line);
-      padding:6px 10px;border-radius:999px;font-size:12px;
+      display:inline-block;
+      font-weight:900;
+      color:#1b160a;
+      background: rgba(201,162,39,.18);
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      border-radius:999px;
+      font-size:12px;
     }
+
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
     .col-4{grid-column:span 4}
     .col-6{grid-column:span 6}
@@ -147,10 +246,10 @@
     .col-12{grid-column:span 12}
 
     .card{
-      background:var(--card);
+      background: var(--glass);
       border:1px solid var(--line);
-      border-radius:var(--r);
-      box-shadow:var(--shadow);
+      border-radius: var(--r);
+      box-shadow: var(--shadow2);
       overflow:hidden;
     }
     .pad{padding:16px}
@@ -158,13 +257,33 @@
     .list{margin:10px 0 0;padding:0 18px}
     .list li{margin:6px 0}
 
+    /* Roast cards */
+    .roasts{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .roast-card{padding:16px}
+    .roast-top{
+      display:flex;align-items:center;gap:10px;
+      margin-bottom:8px;
+    }
+    .dot{
+      width:12px;height:12px;border-radius:999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,162,39,.18);
+      flex:0 0 auto;
+    }
+    .roast-card b{font-size:16px}
+
     /* Gallery */
     .thumb{
-      height:180px;
+      height: 180px;
       background:
         linear-gradient(180deg, rgba(15,61,46,.08), rgba(201,162,39,.08)),
         var(--img);
-      background-size:cover;background-position:center;
+      background-size:cover;
+      background-position:center;
       border-bottom:1px solid var(--line);
     }
 
@@ -175,29 +294,45 @@
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0;color:var(--muted)}
 
+    /* Contact */
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
     /* Footer */
-    footer{border-top:1px solid var(--line);padding:18px 0 30px;color:var(--muted)}
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 30px;
+      color:var(--muted);
+    }
     .footer-row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
     /* Floating WhatsApp */
     .float-wa{
-      position:fixed;left:16px;bottom:16px;z-index:999;
-      border:0;border-radius:999px;padding:12px 14px;
-      background:linear-gradient(135deg,var(--text),#0A2F22);
-      color:#fff;font-weight:900;box-shadow:0 18px 40px rgba(0,0,0,.20);
+      position:fixed;
+      left:16px;
+      bottom:16px;
+      z-index:999;
+      border:0;
+      border-radius:999px;
+      padding:12px 14px;
+      background: linear-gradient(135deg,var(--text),#0A2F22);
+      color:#fff;
+      font-weight:900;
+      box-shadow: 0 18px 40px rgba(0,0,0,.20);
     }
 
     /* Responsive */
     @media (max-width: 980px){
       .links{display:none}
-      .hero-title{font-size:36px}
+      .hero h1{font-size:40px}
       .col-4{grid-column:span 6}
       .col-6,.col-8{grid-column:span 12}
+      .roasts{grid-template-columns:1fr}
     }
     @media (max-width: 520px){
-      .hero-title{font-size:30px}
-      .col-4{grid-column:span 12}
+      .hero h1{font-size:32px}
       .brand{min-width:unset}
+      .hero-logo-wrap{width:102px;height:102px;border-radius:26px}
+      .hero-logo{width:84px;height:84px;border-radius:22px}
     }
   </style>
 </head>
@@ -209,10 +344,10 @@
     <div class="container">
       <div class="nav-inner">
         <div class="brand">
-          <img src="bn.jfif" alt="بن الحفناوي">
+          <img class="brand-logo" src="bn.jfif" alt="بن الحفناوي" />
           <div>
-            <div class="name">بن الحفناوي <span class="badge">خبراء القهوة</span></div>
-            <div class="sub">المقطم - الهضبة الوسطى</div>
+            <div class="brand-name">بن الحفناوي <span class="badge">خبراء القهوة</span></div>
+            <div class="brand-sub">المقطم - الهضبة الوسطى</div>
           </div>
         </div>
 
@@ -221,7 +356,7 @@
           <a href="#roasts">التحميص</a>
           <a href="#benefits">فوائد</a>
           <a href="#gallery">المعرض</a>
-          <a href="#faq">FAQ</a>
+          <a href="#faq">أسئلة</a>
           <a href="#contact">التواصل</a>
         </nav>
 
@@ -234,9 +369,9 @@
   </div>
 
   <!-- HERO -->
-  <header class="hero" id="top">
-    <video autoplay muted loop playsinline>
-      <source src="31383-385863273_medium.mp4" type="video/mp4">
+  <header class="hero" id="top" aria-label="الواجهة الرئيسية">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="31383-385863273_medium.mp4" type="video/mp4" />
       المتصفح لا يدعم تشغيل الفيديو.
     </video>
 
@@ -245,11 +380,11 @@
         <div class="hero-box">
           <span class="pill">تحميص يومي • طحن حسب الطلب • جودة ثابتة</span>
 
-          <div class="hero-title">
-            <img src="bn.jfif" alt="لوجو بن الحفناوي">
-            <span>بن الحفناوي… هوية قهوة بثقة</span>
+          <div class="hero-logo-wrap">
+            <img class="hero-logo" src="bn.jfif" alt="لوجو بن الحفناوي" />
           </div>
 
+          <h1>بن الحفناوي</h1>
           <p>اختيارات بن بعناية + درجات تحميص وطحن تناسب (إسبريسو – فلتر – تركي). جودة ثابتة وذوق راقي.</p>
 
           <div class="hero-cta">
@@ -257,7 +392,7 @@
             <a class="btn" style="color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.10)" href="#about">اعرف أكتر</a>
           </div>
 
-          <div class="note">🕒 يومياً من 6 صباحاً حتى 1 ليلاً • 📍 المقطم - الهضبة الوسطى</div>
+          <div class="hero-meta">🕒 يومياً من 6 صباحاً حتى 1 ليلاً • 📍 المقطم - الهضبة الوسطى</div>
         </div>
       </div>
     </div>
@@ -271,7 +406,7 @@
           <h2>عن بن الحفناوي</h2>
           <p>بن بطعم ثابت… وخبرة في اختيار التحميص والطحن.</p>
         </div>
-        <span class="kicker">هوية البراند</span>
+        <span class="kicker">Brand</span>
       </div>
 
       <div class="grid">
@@ -319,10 +454,19 @@
         <span class="kicker">Roast</span>
       </div>
 
-      <div class="grid">
-        <div class="card col-4"><div class="pad"><b>فاتح</b><div class="muted">نكهة أوضح… مناسب للفلتر وV60.</div></div></div>
-        <div class="card col-4"><div class="pad"><b>متوسط</b><div class="muted">توازن ممتاز… مناسب للإسبريسو والفلتر.</div></div></div>
-        <div class="card col-4"><div class="pad"><b>غامق</b><div class="muted">طعم قوي… لعشاق القهوة الثقيلة.</div></div></div>
+      <div class="roasts">
+        <div class="card roast-card">
+          <div class="roast-top"><span class="dot"></span><b>تحميص فاتح</b></div>
+          <div class="muted">نكهة أوضح وحموضة خفيفة غالباً… مناسب للفلتر وV60.</div>
+        </div>
+        <div class="card roast-card">
+          <div class="roast-top"><span class="dot" style="background:#b88f1d"></span><b>تحميص متوسط</b></div>
+          <div class="muted">توازن ممتاز بين الطعم والقوة… مناسب للإسبريسو والفلتر.</div>
+        </div>
+        <div class="card roast-card">
+          <div class="roast-top"><span class="dot" style="background:#8f6f18"></span><b>تحميص غامق</b></div>
+          <div class="muted">طعم قوي ومرارة أعلى غالباً… لعشاق القهوة الثقيلة.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -374,7 +518,7 @@
       <div class="titlebar">
         <div>
           <h2>المعرض</h2>
-          <p>تقدر تستبدلها بصور حقيقية من المحل.</p>
+          <p>تقدر تستبدل الصور بصور حقيقية من المحل.</p>
         </div>
         <span class="kicker">Gallery</span>
       </div>
@@ -390,8 +534,12 @@
         </div>
         <div class="card col-4">
           <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1400&q=80')"></div>
-          <div class="pad"><b>إسبريسو</b><div class="muted">نَفَس ثابت… كل كوب.</div></div>
+          <div class="pad"><b>تجربة إسبريسو</b><div class="muted">نَفَس ثابت… كل كوب.</div></div>
         </div>
+      </div>
+
+      <div class="muted" style="font-size:12px;margin-top:10px;">
+        * لو رفعت صورك للريبو (مثلاً: img1.jpg) غير الروابط هنا لاسم الملف.
       </div>
     </div>
   </section>
@@ -440,12 +588,12 @@
       <div class="grid">
         <div class="card col-12">
           <div class="pad">
-            <b>بن الحفناوي</b>
+            <b style="font-size:18px;">بن الحفناوي</b>
             <div class="muted" style="margin-top:8px;">📍 المقطم - الهضبة الوسطى</div>
             <div class="muted">🕒 من 6 صباحاً إلى 1 ليلاً</div>
             <div class="muted">📞 <a href="tel:01122296566">01122296566</a></div>
 
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+            <div class="contact-actions">
               <a class="btn primary" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
               <a class="btn gold" href="tel:01122296566">اتصال</a>
             </div>
@@ -471,7 +619,10 @@
   <a class="float-wa" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
 
   <script>
+    // سنة الفوتر
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // سكرول ناعم
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener("click",(e)=>{
         const id=a.getAttribute("href");
@@ -483,5 +634,6 @@
     });
   </script>
 </body>
-</html> 
+</html>
+
 
