@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>بن الحفناوي | خبراء القهوة</title>
-  <meta name="description" content="بن الحفناوي - خبراء القهوة. بن طازج، تحميص يومي، قهوة مختصة ومنتجات متنوعة." />
+  <meta name="description" content="بن الحفناوي - خبراء القهوة. بن طازج، تحميص يومي، طحن حسب الطلب، وتوريد للمقاهي." />
 
   <style>
     :root{
@@ -31,7 +31,12 @@
     }
     a{color:inherit; text-decoration:none}
     .container{max-width:1100px; margin:0 auto; padding:0 16px}
-    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:rgba(255,255,255,.03)}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 12px; border:1px solid var(--line);
+      border-radius:999px; color:var(--muted);
+      background:rgba(255,255,255,.03)
+    }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:12px 16px; border-radius:12px; border:1px solid var(--line);
@@ -42,8 +47,10 @@
     .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.18)}
     .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2)); border:0; color:#1b120a}
     .btn.primary:hover{filter:brightness(1.02)}
-    .btn.danger{background:rgba(255,0,0,.10); border-color:rgba(255,0,0,.25)}
-    .badge{font-size:12px; color:#1b120a; background:var(--brand); padding:2px 8px; border-radius:999px; font-weight:800}
+    .badge{
+      font-size:12px; color:#1b120a; background:var(--brand);
+      padding:2px 8px; border-radius:999px; font-weight:800
+    }
 
     /* NAV */
     .nav{
@@ -53,8 +60,12 @@
       border-bottom:1px solid var(--line);
     }
     .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:10px 0; gap:10px}
-    .logo{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.2px}
-    .logo .mark{width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand2)); display:grid; place-items:center; color:#1b120a; box-shadow: var(--shadow)}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:900}
+    .logo .mark{
+      width:40px; height:40px; border-radius:12px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      display:grid; place-items:center; color:#1b120a; box-shadow: var(--shadow)
+    }
     .nav-links{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
     .nav a.link{padding:10px 12px; border-radius:10px; color:var(--muted)}
     .nav a.link:hover{background:rgba(255,255,255,.05); color:var(--text)}
@@ -69,7 +80,7 @@
     .dd > button:hover{background:rgba(255,255,255,.05); color:var(--text)}
     .dd-menu{
       position:absolute; top:44px; inset-inline-start:0;
-      min-width:240px;
+      min-width:260px;
       background:rgba(22,17,12,.98);
       border:1px solid var(--line);
       border-radius:14px;
@@ -84,13 +95,10 @@
     .dd-menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
     .dd.open .dd-menu{display:block}
 
-    /* Right actions */
     .actions{display:flex; gap:10px; align-items:center}
-    .cart-pill{display:flex; gap:8px; align-items:center}
-    .cart-count{min-width:26px; height:26px; border-radius:999px; background:rgba(255,255,255,.08); display:grid; place-items:center; font-weight:900}
 
     /* HERO */
-    .hero{padding:42px 0 16px}
+    .hero{padding:44px 0 16px}
     .hero-grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -100,7 +108,7 @@
     .hero-card{
       background:
         linear-gradient(rgba(22,17,12,.82), rgba(22,17,12,.82)),
-        url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80");
+        url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80");
       background-size:cover;
       background-position:center;
       border:1px solid var(--line);
@@ -117,8 +125,8 @@
       pointer-events:none;
     }
     .hero-card > *{position:relative; z-index:1}
-    .hero h1{margin:12px 0 10px; font-size:42px; line-height:1.2}
-    .hero p{margin:0; color:var(--muted); font-size:18px; max-width:55ch}
+    .hero h1{margin:12px 0 10px; font-size:44px; line-height:1.2}
+    .hero p{margin:0; color:var(--muted); font-size:18px; max-width:60ch}
     .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
 
     .side-card{
@@ -128,49 +136,22 @@
       padding:18px;
       box-shadow: var(--shadow);
     }
-    .side-card h3{margin:0 0 8px}
+    .side-card h3{margin:0 0 10px}
     .kv{display:grid; gap:10px; margin-top:10px}
-    .kv .row{display:flex; justify-content:space-between; gap:10px; padding:10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.03)}
+    .kv .row{
+      display:flex; justify-content:space-between; gap:10px;
+      padding:10px; border:1px solid var(--line);
+      border-radius:12px; background:rgba(255,255,255,.03)
+    }
     .kv .row span{color:var(--muted)}
     .kv .row b{font-weight:900}
 
-    /* TOOLBAR */
-    .toolbar{
-      margin:18px 0 10px;
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .field{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      flex:1;
-      min-width:220px;
-    }
-    .field input, .field select{
-      width:100%;
-      background:transparent;
-      border:0;
-      outline:none;
-      color:var(--text);
-      font-size:15px;
-    }
-    .field select option{background:#1a130c}
-    .chip{
-      padding:8px 10px; border:1px solid var(--line); border-radius:999px;
-      background:rgba(255,255,255,.03); color:var(--muted); cursor:pointer; user-select:none;
-    }
-    .chip.active{background:rgba(212,163,115,.15); border-color:rgba(212,163,115,.35); color:var(--text)}
-    .section-title{display:flex; align-items:center; justify-content:space-between; gap:10px; margin:18px 0 10px}
+    /* SECTIONS */
+    .section{padding:14px 0 26px}
+    .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:10px; margin:18px 0 10px}
     .section-title h2{margin:0; font-size:22px}
     .section-title p{margin:0; color:var(--muted)}
-
-    /* PRODUCTS */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
     .card{
       background:rgba(22,17,12,.72);
       border:1px solid var(--line);
@@ -184,80 +165,17 @@
     .thumb{
       height:160px;
       background:
-        linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)),
+        linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.40)),
         var(--img);
       background-size:cover;
       background-position:center;
     }
-    .card-body{padding:14px; display:flex; flex-direction:column; gap:10px; flex:1}
-    .meta{display:flex; gap:10px; align-items:center; justify-content:space-between}
+    .card-body{padding:14px; display:flex; flex-direction:column; gap:8px; flex:1}
     .title{font-weight:900}
     .sub{color:var(--muted); font-size:13px}
-    .price{font-weight:900}
-    .actions-row{display:flex; gap:10px; margin-top:auto}
-    .qty{
-      display:flex; gap:6px; align-items:center; border:1px solid var(--line);
-      border-radius:12px; padding:6px; background:rgba(255,255,255,.03)
-    }
-    .qty button{
-      width:32px; height:32px; border-radius:10px; border:1px solid var(--line);
-      background:rgba(255,255,255,.04); color:var(--text); cursor:pointer; font-weight:900;
-    }
-    .qty span{min-width:24px; text-align:center; font-weight:900}
     .small{font-size:12px; color:var(--muted)}
 
-    /* CART DRAWER */
-    .drawer{
-      position:fixed; top:0; inset-inline-end:0;
-      width:min(420px, 92vw);
-      height:100vh;
-      background:rgba(18,13,9,.98);
-      border-inline-start:1px solid var(--line);
-      box-shadow: var(--shadow);
-      transform: translateX(-105%); /* RTL: end is left visually; we'll handle in JS */
-      transition: .2s transform;
-      z-index:100;
-      display:flex; flex-direction:column;
-    }
-    html[dir="rtl"] .drawer{transform: translateX(105%)} /* hide to the right in RTL */
-    .drawer.open{transform: translateX(0)}
-    .drawer-header{
-      padding:14px;
-      display:flex; justify-content:space-between; align-items:center;
-      border-bottom:1px solid var(--line);
-    }
-    .drawer-header h3{margin:0}
-    .drawer-body{padding:14px; overflow:auto; display:flex; flex-direction:column; gap:10px}
-    .item{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:10px;
-      padding:10px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:rgba(255,255,255,.03);
-    }
-    .item b{display:block}
-    .item .muted{color:var(--muted); font-size:13px}
-    .drawer-footer{
-      padding:14px;
-      border-top:1px solid var(--line);
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .total{display:flex; justify-content:space-between; font-weight:900}
-    .overlay{
-      position:fixed; inset:0; background:rgba(0,0,0,.55);
-      z-index:90; display:none;
-    }
-    .overlay.show{display:block}
-
-    /* SECTIONS */
-    .section{padding:10px 0 22px}
-    .two-col{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .info{
       background:rgba(22,17,12,.70);
       border:1px solid var(--line);
@@ -267,6 +185,8 @@
     .info h3{margin:0 0 10px}
     .info p{margin:0; color:var(--muted)}
     .list{margin:10px 0 0; padding:0 18px; color:var(--muted)}
+    .divider{height:1px; background:var(--line); margin:10px 0}
+
     footer{border-top:1px solid var(--line); padding:18px 0 30px; color:var(--muted)}
     footer .row{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
 
@@ -280,7 +200,7 @@
     @media (max-width: 520px){
       .grid{grid-template-columns: 1fr}
       .hero h1{font-size:32px}
-      .nav-links{display:none} /* keep it simple on mobile */
+      .nav-links{display:none}
     }
   </style>
 </head>
@@ -300,15 +220,16 @@
         </div>
 
         <div class="nav-links">
-          <a class="link" href="#products">المنتجات</a>
+          <a class="link" href="#home">الرئيسية</a>
 
           <div class="dd" data-dd>
-            <button type="button" aria-expanded="false">الأقسام ▾</button>
+            <button type="button" aria-expanded="false">المنتجات ▾</button>
             <div class="dd-menu" role="menu">
-              <a href="#beans">حبوب البن <span class="pill" style="padding:2px 8px; font-size:12px;">Bean</span></a>
-              <a href="#ground">بن مطحون <span class="pill" style="padding:2px 8px; font-size:12px;">Ground</span></a>
-              <a href="#capsules">كبسولات <span class="pill" style="padding:2px 8px; font-size:12px;">Caps</span></a>
-              <a href="#tools">أدوات وتحضير <span class="pill" style="padding:2px 8px; font-size:12px;">Gear</span></a>
+              <a href="#beans">حبوب البن</a>
+              <a href="#ground">بن مطحون</a>
+              <a href="#turkish">قهوة تركي</a>
+              <a href="#espresso">قهوة إسبريسو</a>
+              <a href="#tools">أدوات وتحضير</a>
             </div>
           </div>
 
@@ -327,30 +248,28 @@
 
         <div class="actions">
           <a class="btn" href="tel:01122296566" title="اتصال">📞 اتصال</a>
-          <button class="btn primary cart-pill" id="openCart" type="button" title="السلة">
-            🛒 السلة <span class="cart-count" id="cartCount">0</span>
-          </button>
+          <a class="btn primary" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%A3%D9%84%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">واتساب</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-card">
           <span class="pill">✅ تحميص يومي • ✅ طحن حسب الطلب • ✅ توريد للمقاهي</span>
-          <h1>قهوة تليق بالذوق… من <span style="color:var(--brand)">خبراء القهوة</span></h1>
+          <h1>بن الحفناوي… <span style="color:var(--brand)">خبراء القهوة</span></h1>
           <p>
-            اختر نوع البن، درجة التحميص، والطحن المناسب. هنساعدك توصل لأفضل طعم حسب طريقتك
+            هوية قهوة ثابتة وجودة عالية. نساعدك تختار البن والتحميص والطحن المناسب لطريقتك
             (إسبريسو – فلتر – تركي).
           </p>
 
           <div class="hero-cta">
-            <a class="btn primary" href="#products">ابدأ التسوق</a>
-            <a class="btn" href="#services">الخدمات</a>
-            <a class="btn" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener">واتساب</a>
+            <a class="btn primary" href="#catalog">استعرض الأصناف</a>
+            <a class="btn" href="#services">خدماتنا</a>
+            <a class="btn" href="#contact">العنوان</a>
           </div>
 
           <div style="margin-top:14px; color:var(--muted); font-size:13px;">
@@ -359,60 +278,100 @@
         </div>
 
         <div class="side-card">
-          <h3>طلب سريع</h3>
+          <h3>معلومات سريعة</h3>
           <div class="kv">
-            <div class="row"><span>رقم الهاتف</span><b>01122296566</b></div>
+            <div class="row"><span>الهاتف</span><b>01122296566</b></div>
             <div class="row"><span>مواعيد العمل</span><b>6 ص → 1 ل</b></div>
-            <div class="row"><span>المنطقة</span><b>المقطم</b></div>
+            <div class="row"><span>الموقع</span><b>المقطم - الهضبة الوسطى</b></div>
           </div>
 
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-            <a class="btn primary" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">اطلب الأسعار واتساب</a>
-            <a class="btn" href="#contact">عنواننا</a>
+          <div class="divider"></div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn primary" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%A3%D9%86%D9%88%D8%A7%D8%B9%20%D8%A7%D9%84%D8%A8%D9%86" target="_blank" rel="noopener">اسأل واتساب</a>
+            <a class="btn" href="tel:01122296566">اتصل الآن</a>
           </div>
 
           <div style="margin-top:12px" class="small">
-            * دي صفحة تجريبية — تقدر تضيف منتجاتك وأسعارك بنفسك بسهولة من قسم “قائمة المنتجات” تحت.
+            * هنا هنركز على “هوية البراند” بدون أسعار. بعدين نضيف صفحة منتجات وأسعار لما تحب.
           </div>
         </div>
       </div>
-
-      <!-- Toolbar -->
-      <div class="toolbar" id="products">
-        <div class="field" title="بحث">
-          🔎
-          <input id="searchInput" type="search" placeholder="ابحث عن منتج... (مثال: إسبريسو / تركي / فلتر)" />
-        </div>
-
-        <div class="field" title="فلتر القسم">
-          🧩
-          <select id="categorySelect">
-            <option value="all">كل الأقسام</option>
-            <option value="beans">حبوب البن</option>
-            <option value="ground">بن مطحون</option>
-            <option value="capsules">كبسولات</option>
-            <option value="tools">أدوات وتحضير</option>
-          </select>
-        </div>
-
-        <div class="chip active" data-sort="featured">الأكثر طلباً</div>
-        <div class="chip" data-sort="priceAsc">الأقل سعراً</div>
-        <div class="chip" data-sort="priceDesc">الأعلى سعراً</div>
-      </div>
-
-      <div class="section-title">
-        <div>
-          <h2>قائمة المنتجات</h2>
-          <p>اضغط “أضف للسلة” — وبعدها “إرسال الطلب واتساب”.</p>
-        </div>
-        <div class="pill">💡 لتعديل المنتجات: ابحث عن <b>PRODUCTS</b> داخل الكود</div>
-      </div>
-
-      <div class="grid" id="productGrid"></div>
     </div>
   </section>
 
-  <!-- SECTIONS -->
+  <!-- CATALOG (NO PRICES) -->
+  <section class="section" id="catalog">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>الأصناف</h2>
+          <p>عرض هوية البراند وأمثلة للأصناف — بدون أسعار.</p>
+        </div>
+        <div class="pill">💡 لتعديل الأصناف: ابحث عن <b>CATALOG</b> داخل الكود</div>
+      </div>
+
+      <!-- CATALOG START -->
+      <div class="grid">
+        <div class="card" id="beans" style="--img:url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80')">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="card-body">
+            <div class="title">حبوب البن</div>
+            <div class="sub">اختيارات متنوعة • درجات تحميص مختلفة</div>
+            <div class="small">مناسب للإسبريسو والفلتر حسب اختيارك.</div>
+          </div>
+        </div>
+
+        <div class="card" id="ground">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="card-body">
+            <div class="title">بن مطحون</div>
+            <div class="sub">طحن حسب الطلب • جودة ثابتة</div>
+            <div class="small">طحن مناسب (تركي/إسبريسو/فلتر).</div>
+          </div>
+        </div>
+
+        <div class="card" id="turkish">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1506224774225-9b2f3a74c1b0?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="card-body">
+            <div class="title">قهوة تركي</div>
+            <div class="sub">نعومة عالية • طعم قوي</div>
+            <div class="small">محوج/سادة حسب المتاح.</div>
+          </div>
+        </div>
+
+        <div class="card" id="espresso">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="card-body">
+            <div class="title">قهوة إسبريسو</div>
+            <div class="sub">كريما قوية • تحميص متوازن</div>
+            <div class="small">اختيارات مناسبة للماكينات المنزلية والمقاهي.</div>
+          </div>
+        </div>
+
+        <div class="card" id="tools">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="card-body">
+            <div class="title">أدوات وتحضير</div>
+            <div class="sub">مطاحن • أدوات فلتر • مستلزمات</div>
+            <div class="small">كل ما يلزم لعمل قهوتك بأفضل طريقة.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="card-body">
+            <div class="title">طلبات الشركات والمقاهي</div>
+            <div class="sub">توريد • كميات • جدولة</div>
+            <div class="small">تواصل معنا لتفاصيل التوريد والاحتياجات.</div>
+          </div>
+        </div>
+      </div>
+      <!-- CATALOG END -->
+    </div>
+  </section>
+
+  <!-- SERVICES + ABOUT -->
   <section class="section" id="services">
     <div class="container">
       <div class="two-col">
@@ -428,39 +387,52 @@
         <div class="info" id="about">
           <h3>عن بن الحفناوي</h3>
           <p>
-            هدفنا نوصل لك طعم ثابت وجودة عالية. تقدر تبدأ بمنتج واحد، وبعدها نزبط لك اختيارات تناسب ذوقك.
+            هدفنا بناء هوية قهوة قوية: جودة ثابتة، طعم واضح، وخدمة سريعة.
+            بنشتغل يومياً عشان نوصل لك أفضل تجربة.
           </p>
           <ul class="list">
             <li>خبراء القهوة</li>
-            <li>اختيارات متنوعة</li>
-            <li>خدمة عملاء سريعة</li>
+            <li>اختيارات تناسب كل الأذواق</li>
+            <li>مصداقية وتواصل سريع</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container">
       <div class="two-col">
         <div class="info">
           <h3>التواصل</h3>
           <p>📍 العنوان: المقطم - الهضبة الوسطى</p>
-          <p>📞 الهاتف: <a class="btn" style="margin-top:10px" href="tel:01122296566">اتصال 01122296566</a></p>
-          <p style="margin-top:10px">🕒 يومياً من 6 صباحاً حتى 1 ليلاً</p>
-          <a class="btn primary" style="margin-top:10px" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener">واتساب مباشر</a>
+          <p>🕒 يومياً من 6 صباحاً حتى 1 ليلاً</p>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+            <a class="btn" href="tel:01122296566">📞 اتصال 01122296566</a>
+            <a class="btn primary" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1" target="_blank" rel="noopener">واتساب</a>
+          </div>
+
+          <div class="divider"></div>
+          <div class="small">
+            لو تحب نضيف: لوجو، ألوان هوية ثابتة، خط عربي فخم، وأيقونات سوشيال.
+          </div>
         </div>
 
         <div class="info">
-          <h3>ملاحظة مهمة</h3>
+          <h3>روابط السوشيال (اختياري)</h3>
+          <p class="small">تقدر تغيّر الروابط لما تجهّز صفحات البراند.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+            <a class="btn" href="#" onclick="alert('حط لينك فيسبوك هنا'); return false;">فيسبوك</a>
+            <a class="btn" href="#" onclick="alert('حط لينك إنستجرام هنا'); return false;">إنستجرام</a>
+            <a class="btn" href="#" onclick="alert('حط لينك تيك توك هنا'); return false;">تيك توك</a>
+          </div>
+
+          <div class="divider"></div>
           <p>
-            GitHub Pages موقع ثابت (Static) — ممتاز لعرض المنتجات والأسعار واستقبال الطلبات عبر واتساب/اتصال.
-            لو عايز دفع أونلاين وشحن وتتبع طلبيات، ساعتها نحتاج منصة متجر (Shopify / WooCommerce) أو Backend.
+            لو هدفك “هوية” قوية: نضيف قسم قصة لوغو/قيم البراند/نمط التحميص/صور حقيقية من المحل.
           </p>
-          <ul class="list">
-            <li>حاليًا: كتالوج + سلة + إرسال واتساب ✅</li>
-            <li>مستقبلاً: دفع إلكتروني + شحن + لوحة تحكم</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -475,354 +447,25 @@
     </div>
   </footer>
 
-  <!-- CART UI -->
-  <div class="overlay" id="overlay"></div>
-  <aside class="drawer" id="drawer">
-    <div class="drawer-header">
-      <h3>🛒 سلة المشتريات</h3>
-      <button class="btn" id="closeCart" type="button">إغلاق</button>
-    </div>
-    <div class="drawer-body" id="cartItems"></div>
-    <div class="drawer-footer">
-      <div class="total">
-        <span>الإجمالي</span>
-        <span id="cartTotal">0</span>
-      </div>
-      <button class="btn primary" id="sendWhatsApp" type="button">إرسال الطلب واتساب</button>
-      <button class="btn danger" id="clearCart" type="button">تفريغ السلة</button>
-      <div class="small">* الأسعار هنا للتجربة. تقدر تغيرها بسهولة من قسم PRODUCTS داخل الكود.</div>
-    </div>
-  </aside>
-
   <script>
-    // ========= SETTINGS =========
-    const PHONE_LOCAL = "01122296566";
-    const PHONE_WA = "201122296566"; // for wa.me
+    // سنة الفوتر
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ========= PRODUCTS =========
-    // عدّل هنا: أضف/احذف منتجاتك بسهولة
-    // fields: id, name, category(beans/ground/capsules/tools), price, unit, featured(true/false), note, img
-    const PRODUCTS = [
-      {
-        id: "b1",
-        name: "بن إسبريسو (حبوب)",
-        category: "beans",
-        price: 240,
-        unit: "250 جم",
-        featured: true,
-        note: "تحميص وسط مناسب للإسبريسو",
-        img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        id: "b2",
-        name: "بن فلتر (حبوب)",
-        category: "beans",
-        price: 220,
-        unit: "250 جم",
-        featured: true,
-        note: "تحميص فاتح للـ V60 والفلتر",
-        img: "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        id: "g1",
-        name: "بن تركي (مطحون)",
-        category: "ground",
-        price: 190,
-        unit: "250 جم",
-        featured: true,
-        note: "طحن ناعم حسب الطلب",
-        img: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        id: "g2",
-        name: "بن سادة (مطحون)",
-        category: "ground",
-        price: 180,
-        unit: "250 جم",
-        featured: false,
-        note: "مناسب للقهوة اليومية",
-        img: "https://images.unsplash.com/photo-1506224774225-9b2f3a74c1b0?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        id: "c1",
-        name: "كبسولات إسبريسو",
-        category: "capsules",
-        price: 260,
-        unit: "10 كبسولات",
-        featured: false,
-        note: "متوافقة مع ماكينات كبسولات شائعة",
-        img: "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=1200&q=80"
-      },
-      {
-        id: "t1",
-        name: "مطحنة يدوية",
-        category: "tools",
-        price: 450,
-        unit: "قطعة",
-        featured: false,
-        note: "مناسبة للسفر والتحضير المنزلي",
-        img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80"
-      }
-    ];
-
-    // ========= STATE =========
-    const cart = new Map(); // id -> qty
-    let activeSort = "featured";
-
-    // ========= HELPERS =========
-    const fmt = (n) => `${n} جنيه`;
-    const getProduct = (id) => PRODUCTS.find(p => p.id === id);
-
-    function cartCount(){
-      let count = 0;
-      cart.forEach(q => count += q);
-      return count;
-    }
-
-    function cartTotal(){
-      let total = 0;
-      cart.forEach((q, id) => {
-        const p = getProduct(id);
-        total += (p?.price || 0) * q;
-      });
-      return total;
-    }
-
-    // ========= UI: PRODUCTS =========
-    const grid = document.getElementById("productGrid");
-    const searchInput = document.getElementById("searchInput");
-    const categorySelect = document.getElementById("categorySelect");
-    const chips = Array.from(document.querySelectorAll(".chip"));
-
-    function matchesFilters(p){
-      const q = (searchInput.value || "").trim().toLowerCase();
-      const cat = categorySelect.value;
-      const text = `${p.name} ${p.note} ${p.unit}`.toLowerCase();
-      const okQuery = !q || text.includes(q);
-      const okCat = (cat === "all") || (p.category === cat);
-      return okQuery && okCat;
-    }
-
-    function sortProducts(list){
-      const copy = [...list];
-      if(activeSort === "featured"){
-        copy.sort((a,b) => (b.featured === true) - (a.featured === true));
-      } else if(activeSort === "priceAsc"){
-        copy.sort((a,b) => a.price - b.price);
-      } else if(activeSort === "priceDesc"){
-        copy.sort((a,b) => b.price - a.price);
-      }
-      return copy;
-    }
-
-    function renderProducts(){
-      const filtered = PRODUCTS.filter(matchesFilters);
-      const sorted = sortProducts(filtered);
-
-      grid.innerHTML = "";
-      if(sorted.length === 0){
-        grid.innerHTML = `<div class="info" style="grid-column:1/-1">لا توجد نتائج للبحث الحالي.</div>`;
-        return;
-      }
-
-      for(const p of sorted){
-        const qty = cart.get(p.id) || 0;
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="thumb" style="--img:url('${p.img}')"></div>
-          <div class="card-body">
-            <div class="meta">
-              <div>
-                <div class="title">${p.name}</div>
-                <div class="sub">${p.unit} • ${labelCategory(p.category)}</div>
-              </div>
-              <div class="price">${fmt(p.price)}</div>
-            </div>
-            <div class="small">${p.note || ""}</div>
-
-            <div class="actions-row">
-              <div class="qty" aria-label="الكمية">
-                <button type="button" data-dec="${p.id}">-</button>
-                <span id="qty-${p.id}">${qty}</span>
-                <button type="button" data-inc="${p.id}">+</button>
-              </div>
-              <button class="btn primary" type="button" data-add="${p.id}">أضف للسلة</button>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      }
-    }
-
-    function labelCategory(cat){
-      return cat === "beans" ? "حبوب" :
-             cat === "ground" ? "مطحون" :
-             cat === "capsules" ? "كبسولات" :
-             cat === "tools" ? "أدوات" : cat;
-    }
-
-    // ========= UI: CART =========
-    const drawer = document.getElementById("drawer");
-    const overlay = document.getElementById("overlay");
-    const openCartBtn = document.getElementById("openCart");
-    const closeCartBtn = document.getElementById("closeCart");
-    const cartItems = document.getElementById("cartItems");
-    const cartCountEl = document.getElementById("cartCount");
-    const cartTotalEl = document.getElementById("cartTotal");
-    const clearCartBtn = document.getElementById("clearCart");
-    const sendWhatsAppBtn = document.getElementById("sendWhatsApp");
-
-    function openCart(){
-      drawer.classList.add("open");
-      overlay.classList.add("show");
-      renderCart();
-    }
-    function closeCart(){
-      drawer.classList.remove("open");
-      overlay.classList.remove("show");
-    }
-
-    function renderCart(){
-      cartCountEl.textContent = cartCount();
-      cartTotalEl.textContent = fmt(cartTotal());
-
-      if(cart.size === 0){
-        cartItems.innerHTML = `<div class="info">السلة فارغة. ابدأ بإضافة منتجات.</div>`;
-        return;
-      }
-
-      let html = "";
-      cart.forEach((q, id) => {
-        const p = getProduct(id);
-        if(!p) return;
-        html += `
-          <div class="item">
-            <div>
-              <b>${p.name}</b>
-              <div class="muted">${p.unit} • ${fmt(p.price)} للواحد</div>
-              <div class="muted">الكمية: <b style="display:inline">${q}</b> • الإجمالي: <b style="display:inline">${fmt(p.price*q)}</b></div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:8px; align-items:stretch">
-              <button class="btn" type="button" data-cart-dec="${id}">-</button>
-              <button class="btn" type="button" data-cart-inc="${id}">+</button>
-              <button class="btn danger" type="button" data-cart-del="${id}">حذف</button>
-            </div>
-          </div>
-        `;
-      });
-      cartItems.innerHTML = html;
-    }
-
-    function setQty(id, qty){
-      if(qty <= 0) cart.delete(id);
-      else cart.set(id, qty);
-
-      // update qty badge in product card if exists
-      const span = document.getElementById(`qty-${id}`);
-      if(span) span.textContent = cart.get(id) || 0;
-
-      cartCountEl.textContent = cartCount();
-      cartTotalEl.textContent = fmt(cartTotal());
-    }
-
-    // ========= EVENTS =========
+    // Dropdowns
+    const dds = Array.from(document.querySelectorAll("[data-dd]"));
     document.addEventListener("click", (e) => {
-      const t = e.target;
-
-      // Dropdown toggle
-      const ddBtn = t.closest?.("[data-dd] > button");
-      if(ddBtn){
-        const dd = ddBtn.parentElement;
+      const btn = e.target.closest?.("[data-dd] > button");
+      if(btn){
+        const dd = btn.parentElement;
         const isOpen = dd.classList.contains("open");
-        document.querySelectorAll("[data-dd].open").forEach(x => x.classList.remove("open"));
+        dds.forEach(x => x.classList.remove("open"));
         if(!isOpen) dd.classList.add("open");
         return;
       }
-
-      // close dropdown if clicked elsewhere
-      if(!t.closest?.("[data-dd]")){
-        document.querySelectorAll("[data-dd].open").forEach(x => x.classList.remove("open"));
-      }
-
-      // product qty inc/dec
-      const incId = t.getAttribute?.("data-inc");
-      const decId = t.getAttribute?.("data-dec");
-      const addId = t.getAttribute?.("data-add");
-      if(incId){
-        setQty(incId, (cart.get(incId)||0) + 1);
-        renderCart();
-      }
-      if(decId){
-        setQty(decId, (cart.get(decId)||0) - 1);
-        renderCart();
-      }
-      if(addId){
-        setQty(addId, (cart.get(addId)||0) + 1);
-        openCart();
-      }
-
-      // cart buttons
-      const cInc = t.getAttribute?.("data-cart-inc");
-      const cDec = t.getAttribute?.("data-cart-dec");
-      const cDel = t.getAttribute?.("data-cart-del");
-      if(cInc){ setQty(cInc, (cart.get(cInc)||0) + 1); renderCart(); }
-      if(cDec){ setQty(cDec, (cart.get(cDec)||0) - 1); renderCart(); }
-      if(cDel){ cart.delete(cDel); renderCart(); }
-
-      // open/close cart
-      if(t === openCartBtn) openCart();
-      if(t === closeCartBtn) closeCart();
-      if(t === overlay) closeCart();
-
-      // sort chips
-      const chip = t.closest?.(".chip");
-      if(chip){
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        activeSort = chip.getAttribute("data-sort");
-        renderProducts();
+      if(!e.target.closest?.("[data-dd]")){
+        dds.forEach(x => x.classList.remove("open"));
       }
     });
-
-    searchInput.addEventListener("input", renderProducts);
-    categorySelect.addEventListener("change", renderProducts);
-
-    clearCartBtn.addEventListener("click", () => {
-      cart.clear();
-      renderProducts();
-      renderCart();
-    });
-
-    sendWhatsAppBtn.addEventListener("click", () => {
-      if(cart.size === 0){
-        alert("السلة فارغة. أضف منتجات أولاً.");
-        return;
-      }
-      // build message
-      let msg = `طلب جديد من موقع بن الحفناوي%0A%0A`;
-      cart.forEach((q, id) => {
-        const p = getProduct(id);
-        if(!p) return;
-        msg += `• ${p.name} (${p.unit}) x${q} = ${p.price*q} جنيه%0A`;
-      });
-      msg += `%0Aالإجمالي: ${cartTotal()} جنيه%0A`;
-      msg += `%0Aالاسم: ______%0Aالعنوان: ______%0Aملاحظات: ______`;
-
-      const url = `https://wa.me/${PHONE_WA}?text=${msg}`;
-      window.open(url, "_blank", "noopener");
-    });
-
-    // ========= INIT =========
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Fix drawer direction in RTL (we used CSS, but keep safe)
-    function initDrawer(){
-      // no-op; CSS handles.
-    }
-    initDrawer();
-    renderProducts();
-    renderCart();
   </script>
 
 </body>
