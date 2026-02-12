@@ -1,187 +1,661 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بن الحفناوي | خبراء القهوة</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بن الحفناوي | خبراء القهوة</title>
+  <meta name="description" content="بن الحفناوي - خبراء القهوة. تحميص يومي، طحن حسب الطلب. المقطم - الهضبة الوسطى." />
 
-<style>
-:root{
-  --bg:#F6F1E6;
-  --card:#EFE6D7;
-  --text:#0F3D2E;
-  --muted:#2D5B47;
-  --brand:#C9A227;
-  --line:#D9CDBB;
-}
+  <style>
+    :root{
+      --bg:#F6F1E6;      /* بيج فاتح */
+      --card:#EFE6D7;    /* بيج أغمق للكروت */
+      --text:#0F3D2E;    /* أخضر غامق */
+      --muted:#2D5B47;   /* أخضر ثانوي */
+      --gold:#C9A227;    /* ذهبي */
+      --gold2:#E2C35A;   /* ذهبي فاتح */
+      --line:#D9CDBB;    /* حدود */
+      --shadow:0 16px 40px rgba(0,0,0,.10);
+      --shadow2:0 10px 25px rgba(0,0,0,.08);
+      --r:18px;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 12% 0%, rgba(201,162,39,.18), transparent 60%),
+        radial-gradient(760px 520px at 100% 12%, rgba(15,61,46,.10), transparent 55%),
+        var(--bg);
+      line-height:1.75;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 16px}
 
-body{
-  background:var(--bg);
-  color:var(--text);
-}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:100;
+      background:rgba(246,241,230,.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:260px;
+    }
+    .brand img{
+      height:56px; width:auto;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      padding:6px;
+      box-shadow: var(--shadow2);
+    }
+    .brand .name{font-weight:900;font-size:16px}
+    .brand .sub{font-size:12px;color:var(--muted);margin-top:2px}
+    .badge{
+      display:inline-flex; align-items:center;
+      padding:4px 10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color:#1b160a;
+      font-weight:900;
+      font-size:12px;
+      margin-inline-start:8px;
+    }
 
-/* HERO VIDEO */
-.hero-video{
-  position:relative;
-  height:100vh;
-  overflow:hidden;
-}
+    .links{
+      display:flex; gap:6px; flex-wrap:wrap; justify-content:center;
+    }
+    .links a{
+      padding:10px 12px; border-radius:12px;
+      color:var(--muted);
+      border:1px solid transparent;
+      font-weight:700;
+    }
+    .links a:hover{
+      background:rgba(201,162,39,.10);
+      border-color:var(--line);
+      color:var(--text);
+    }
 
-.hero-video video{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      cursor:pointer;
+      font-weight:900;
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border:0;
+      background: linear-gradient(135deg, var(--text), #0A2F22);
+      color:#fff;
+    }
+    .btn.gold{
+      border:0;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color:#1b160a;
+    }
 
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:#fff;
-  padding:20px;
-}
+    /* HERO VIDEO */
+    .hero{
+      position:relative;
+      height:92vh;
+      min-height:560px;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+    .hero video{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      filter:saturate(1.05) contrast(1.02);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 520px at 20% 20%, rgba(0,0,0,.20), transparent 60%),
+        linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.55));
+    }
+    .hero-content{
+      position:relative; z-index:2;
+      height:100%;
+      display:flex; align-items:center;
+      padding: 28px 0;
+      color:#fff;
+    }
+    .hero-box{
+      width:min(720px, 100%);
+      background: rgba(15,11,7,.25);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius: 22px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.30);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(201,162,39,.12);
+      color:#fff;
+      font-weight:800;
+      font-size:13px;
+    }
+    .hero h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.15;
+      font-weight:900;
+    }
+    .hero p{
+      margin:0;
+      font-size:16px;
+      color: rgba(255,255,255,.92);
+      max-width: 65ch;
+    }
+    .hero-cta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:16px;
+    }
 
-.hero-overlay h1{
-  font-size:45px;
-  margin-bottom:15px;
-}
+    /* SECTIONS */
+    .section{padding:56px 0}
+    .titlebar{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+      margin-bottom:14px;
+    }
+    .titlebar h2{margin:0;font-size:24px}
+    .titlebar p{margin:0;color:var(--muted)}
+    .card{
+      background: rgba(255,255,255,.55);
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
 
-.hero-overlay p{
-  font-size:20px;
-  margin-bottom:20px;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .col-4{grid-column: span 4}
+    .col-6{grid-column: span 6}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
 
-.btn{
-  display:inline-block;
-  padding:12px 25px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:bold;
-}
+    .pad{padding:16px}
+    .kicker{
+      display:inline-block;
+      font-weight:900;
+      color:#1b160a;
+      background: rgba(201,162,39,.18);
+      border:1px solid var(--line);
+      padding:6px 10px;
+      border-radius: 999px;
+      font-size:12px;
+    }
+    .muted{color:var(--muted)}
+    .list{margin:10px 0 0; padding:0 18px}
+    .list li{margin:6px 0}
 
-.btn-gold{
-  background:var(--brand);
-  color:#000;
-}
+    /* Roast cards */
+    .roast{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .dot{
+      width:14px; height:14px; border-radius:999px;
+      margin-top:6px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,162,39,.18);
+      flex:0 0 auto;
+    }
+    .roast b{display:block;margin-bottom:4px}
 
-/* SECTIONS */
-.section{
-  padding:60px 10%;
-}
+    /* Gallery */
+    .thumb{
+      height:190px;
+      background:
+        linear-gradient(180deg, rgba(15,61,46,.08), rgba(201,162,39,.08)),
+        var(--img);
+      background-size: cover;
+      background-position: center;
+      border-bottom:1px solid var(--line);
+    }
+    .thumb.small{height:160px}
 
-.section h2{
-  margin-bottom:20px;
-  text-align:center;
-}
+    /* FAQ */
+    details{
+      border-top:1px solid var(--line);
+      padding:12px 0;
+    }
+    details:first-child{border-top:0}
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0;color:var(--muted)}
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
+    /* Contact */
+    .contact-box{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
+    }
 
-.card{
-  background:var(--card);
-  padding:20px;
-  border-radius:15px;
-  border:1px solid var(--line);
-}
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 30px;
+      color:var(--muted);
+    }
+    .footer-row{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
 
-.card h3{
-  margin-bottom:10px;
-}
+    /* Floating WhatsApp */
+    .float-wa{
+      position:fixed;
+      left:16px;
+      bottom:16px;
+      z-index:999;
+      border:0;
+      border-radius: 999px;
+      padding:12px 14px;
+      background: linear-gradient(135deg, var(--text), #0A2F22);
+      color:#fff;
+      font-weight:900;
+      box-shadow: 0 18px 40px rgba(0,0,0,.20);
+    }
 
-/* CONTACT */
-.contact{
-  text-align:center;
-  background:var(--card);
-  padding:40px 20px;
-  margin-top:40px;
-}
-
-footer{
-  text-align:center;
-  padding:20px;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-}
-</style>
+    /* Responsive */
+    @media (max-width: 980px){
+      .links{display:none}
+      .hero h1{font-size:38px}
+      .col-4{grid-column: span 6}
+      .col-6,.col-8{grid-column: span 12}
+    }
+    @media (max-width: 520px){
+      .hero h1{font-size:32px}
+      .col-4{grid-column: span 12}
+      .brand{min-width:unset}
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- VIDEO HERO -->
-<section class="hero-video">
-  <video autoplay muted loop playsinline>
-    <source src="31383-385863273_medium.mp4" type="video/mp4">
-  </video>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <img src="bn.jfif" alt="بن الحفناوي">
+          <div>
+            <div class="name">بن الحفناوي <span class="badge">خبراء القهوة</span></div>
+            <div class="sub">المقطم - الهضبة الوسطى</div>
+          </div>
+        </div>
 
-  <div class="hero-overlay">
-    <div>
-      <h1>بن الحفناوي ☕</h1>
-      <p>خبراء القهوة – تحميص يومي وطحن حسب الطلب</p>
-      <a href="#benefits" class="btn btn-gold">اكتشف أكثر</a>
+        <div class="links">
+          <a href="#about">عنّا</a>
+          <a href="#roasts">درجات التحميص</a>
+          <a href="#benefits">فوائد البن</a>
+          <a href="#gallery">المعرض</a>
+          <a href="#faq">أسئلة شائعة</a>
+          <a href="#contact">التواصل</a>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="tel:01122296566">📞 اتصال</a>
+          <a class="btn primary" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- BENEFITS -->
-<section class="section" id="benefits">
-  <h2>فوائد القهوة ودرجات التحميص</h2>
+  <!-- HERO VIDEO -->
+  <header class="hero" id="top">
+    <video autoplay muted loop playsinline>
+      <source src="31383-385863273_medium.mp4" type="video/mp4">
+      المتصفح لا يدعم تشغيل الفيديو.
+    </video>
 
-  <div class="grid">
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-box">
+          <span class="pill">تحميص يومي • طحن حسب الطلب • جودة ثابتة</span>
+          <img src="logo.png" alt="لوجو بن الحفناوي"
+     style="height:55px;width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6));">
 
-    <div class="card">
-      <h3>💚 التحميص الفاتح</h3>
-      <p>نكهة أوضح وحموضة خفيفة، مناسب للفلتر ويحتوي على كافيين أعلى نسبياً.</p>
+          <p>اختيارات بن بعناية + درجات تحميص وطحن تناسب (إسبريسو – فلتر – تركي). جودة ثابتة وذوق راقي.</p>
+          <div class="hero-cta">
+            <a class="btn gold" href="#contact">تواصل الآن</a>
+            <a class="btn" style="color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.10)" href="#about">اعرف أكتر</a>
+          </div>
+          <div style="margin-top:10px; font-size:13px; color:rgba(255,255,255,.90)">
+            🕒 يومياً من 6 صباحاً حتى 1 ليلاً • 📍 المقطم - الهضبة الوسطى
+          </div>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>🤎 التحميص المتوسط</h3>
-      <p>توازن ممتاز بين الطعم والقوة، مناسب للإسبريسو والفلتر.</p>
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="titlebar">
+        <div>
+          <h2>عن بن الحفناوي</h2>
+          <p>بن بطعم ثابت… وخبرة في اختيار التحميص والطحن.</p>
+        </div>
+        <span class="kicker">هوية البراند</span>
+      </div>
+
+      <div class="grid">
+        <div class="card col-8">
+          <div class="pad">
+            <b style="font-size:18px;">خبراء القهوة</b>
+            <div class="muted" style="margin-top:6px;">
+              بن الحفناوي يهتم بجودة الحبوب، ثبات التحميص، ودقة الطحن حسب طريقة التحضير.
+              هدفنا إن كل كوب يطلع بنفس المستوى… كل مرة.
+            </div>
+            <ul class="list muted">
+              <li>تحميص يومي للحفاظ على الطزاجة.</li>
+              <li>طحن حسب الطلب (تركي / إسبريسو / فلتر).</li>
+              <li>اختيارات تناسب الذوق الخفيف أو الثقيل.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="pad">
+            <b style="display:block;margin-bottom:10px;">بيانات سريعة</b>
+            <div class="card" style="box-shadow:none;background:rgba(255,255,255,.65)">
+              <div class="pad">
+                <div class="muted">📍 العنوان</div>
+                <div style="font-weight:900">المقطم - الهضبة الوسطى</div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:10px;box-shadow:none;background:rgba(255,255,255,.65)">
+              <div class="pad">
+                <div class="muted">🕒 المواعيد</div>
+                <div style="font-weight:900">6 صباحاً → 1 ليلاً</div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:10px;box-shadow:none;background:rgba(255,255,255,.65)">
+              <div class="pad">
+                <div class="muted">📞 الهاتف</div>
+                <div style="font-weight:900"><a href="tel:01122296566">01122296566</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="card">
-      <h3>🖤 التحميص الغامق</h3>
-      <p>طعم قوي ومرارة أعلى، مناسب لعشاق القهوة الثقيلة.</p>
+  <!-- ROASTS -->
+  <section class="section" id="roasts">
+    <div class="container">
+      <div class="titlebar">
+        <div>
+          <h2>درجات التحميص</h2>
+          <p>اختار الدرجة المناسبة لطريقتك وذوقك.</p>
+        </div>
+        <span class="kicker">Roast Levels</span>
+      </div>
+
+      <div class="grid">
+        <div class="card col-4">
+          <div class="pad">
+            <div class="roast">
+              <span class="dot"></span>
+              <div>
+                <b>تحميص فاتح</b>
+                <div class="muted">نكهة أوضح وحموضة خفيفة غالباً… مناسب للفلتر والـ V60.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="pad">
+            <div class="roast">
+              <span class="dot" style="background:#b88f1d"></span>
+              <div>
+                <b>تحميص متوسط</b>
+                <div class="muted">توازن ممتاز بين الطعم والقوة… مناسب للإسبريسو والفلتر.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-4">
+          <div class="pad">
+            <div class="roast">
+              <span class="dot" style="background:#8f6f18"></span>
+              <div>
+                <b>تحميص غامق</b>
+                <div class="muted">طعم قوي ومرارة أعلى غالباً… لعشاق القهوة الثقيلة.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="card">
-      <h3>⚡ فوائد القهوة</h3>
-      <p>
-        ✔ تساعد على التركيز<br>
-        ✔ تحتوي على مضادات أكسدة<br>
-        ✔ تعزز النشاط والطاقة<br>
-        ✔ قد تحسن الأداء البدني
-      </p>
+  <!-- BENEFITS -->
+  <section class="section" id="benefits">
+    <div class="container">
+      <div class="titlebar">
+        <div>
+          <h2>فوائد القهوة (باعتدال)</h2>
+          <p>معلومات عامة مفيدة للعميل.</p>
+        </div>
+        <span class="kicker">معلومة</span>
+      </div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <div class="pad">
+            <b>فوائد شائعة</b>
+            <ul class="list muted">
+              <li>تساعد على اليقظة والتركيز (بسبب الكافيين).</li>
+              <li>تحتوي على مضادات أكسدة طبيعية.</li>
+              <li>قد ترفع المزاج وتحسن الأداء عند بعض الأشخاص.</li>
+            </ul>
+            <div class="muted" style="font-size:12px;margin-top:10px;">
+              * لو عندك حساسية للكافيين/ضغط/مشاكل معدة: الأفضل استشارة مختص.
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <div class="pad">
+            <b>اختيار الطحن حسب الطريقة</b>
+            <ul class="list muted">
+              <li><b>إسبريسو:</b> طحن ناعم.</li>
+              <li><b>تركي:</b> ناعم جداً.</li>
+              <li><b>فلتر/V60:</b> متوسط.</li>
+            </ul>
+            <div class="muted" style="margin-top:10px;">
+              قول لنا طريقتك وهنظبط لك الطحن المناسب.
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="titlebar">
+        <div>
+          <h2>المعرض</h2>
+          <p>مظهر راقي يناسب هوية براند القهوة.</p>
+        </div>
+        <span class="kicker">Gallery</span>
+      </div>
 
-<!-- CONTACT -->
-<section class="contact">
-  <h2>📍 تواصل معنا</h2>
-  <p>المقطم - الهضبة الوسطى</p>
-  <p>📞 01122296566</p>
-  <p>🕒 من 6 صباحاً إلى 1 ليلاً</p>
-</section>
+      <div class="grid">
+        <div class="card col-4">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="pad">
+            <b>حبوب مختارة</b>
+            <div class="muted">اختيار بعناية وثبات في الجودة.</div>
+          </div>
+        </div>
 
-<footer>
-  © 2024 بن الحفناوي - جميع الحقوق محفوظة
-</footer>
+        <div class="card col-4">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="pad">
+            <b>طحن حسب الطلب</b>
+            <div class="muted">حسب طريقة التحضير المفضلة.</div>
+          </div>
+        </div>
 
+        <div class="card col-4">
+          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="pad">
+            <b>تجربة إسبريسو</b>
+            <div class="muted">نفس ثابت… كل كوب.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="muted" style="font-size:12px;margin-top:10px;">
+        * تقدر تستبدل صور المعرض بصور حقيقية من المحل عن طريق رفعها للريبو وتغيير الروابط.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="titlebar">
+        <div>
+          <h2>أسئلة شائعة</h2>
+          <p>إجابات سريعة للعملاء.</p>
+        </div>
+        <span class="kicker">FAQ</span>
+      </div>
+
+      <div class="card">
+        <div class="pad">
+          <details open>
+            <summary>إزاي أختار درجة التحميص المناسبة؟</summary>
+            <p>لو بتحب طعم أخف واوضح: فاتح. توازن ممتاز: متوسط. طعم قوي وثقيل: غامق.</p>
+          </details>
+          <details>
+            <summary>هل في طحن حسب الطلب؟</summary>
+            <p>أيوه. قول لنا طريقة التحضير (تركي/إسبريسو/فلتر) وهنظبط الطحن المناسب.</p>
+          </details>
+          <details>
+            <summary>مواعيد العمل؟</summary>
+            <p>يومياً من 6 صباحاً إلى 1 ليلاً.</p>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="titlebar">
+        <div>
+          <h2>التواصل</h2>
+          <p>يسعدنا خدمتك.</p>
+        </div>
+        <span class="kicker">Contact</span>
+      </div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <div class="pad">
+            <b>بيانات المحل</b>
+            <div class="muted" style="margin-top:8px;">📍 المقطم - الهضبة الوسطى</div>
+            <div class="muted">🕒 من 6 صباحاً إلى 1 ليلاً</div>
+            <div class="muted">📞 <a href="tel:01122296566">01122296566</a></div>
+
+            <div class="contact-box">
+              <a class="btn primary" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
+              <a class="btn gold" href="tel:01122296566">اتصال</a>
+            </div>
+
+            <div class="muted" style="font-size:12px;margin-top:10px;">
+              لو تحب نضيف خريطة جوجل، ابعتلي لينك المكان أو الإحداثيات.
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <div class="pad">
+            <b>اطلب هوية كاملة</b>
+            <div class="muted" style="margin-top:8px;">
+              نقدر نضيف لاحقاً: صفحة منتجات، صفحة عروض، صفحة مقالات عن البن والتحميص، وقائمة منسدلة للأصناف.
+            </div>
+            <ul class="list muted">
+              <li>قائمة أصناف (بدون أسعار أو بأسعار لاحقاً).</li>
+              <li>قسم فيديوهات متعدد (7 ثواني لكل فيديو).</li>
+              <li>زر طلب سريع / واتساب مباشر.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="y"></span> بن الحفناوي — خبراء القهوة</div>
+        <div>المقطم - الهضبة الوسطى • 01122296566</div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
+
+  <script>
+    // سنة الفوتر
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // سكرول ناعم
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
 </body>
 </html>
+
