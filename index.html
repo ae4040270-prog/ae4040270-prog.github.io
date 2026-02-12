@@ -1,55 +1,830 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>بن الحفناوي | خبراء القهوة</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بن الحفناوي | خبراء القهوة</title>
+  <meta name="description" content="بن الحفناوي - خبراء القهوة. بن طازج، تحميص يومي، قهوة مختصة ومنتجات متنوعة." />
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: linear-gradient(rgba(59,42,26,0.85), rgba(59,42,26,0.85)),
-    url("https://images.unsplash.com/photo-1509042239860-f550ce710b93");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-}
+  <style>
+    :root{
+      --bg:#0f0b07;
+      --card:#16110c;
+      --muted:#c9b9a6;
+      --text:#fff7ef;
+      --brand:#d4a373;
+      --brand2:#b5835a;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 16px 40px rgba(0,0,0,.45);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0}
+    body{
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(212,163,115,.15), transparent 55%),
+        radial-gradient(1000px 700px at 100% 10%, rgba(181,131,90,.18), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 16px}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:rgba(255,255,255,.03)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(255,255,255,.04); color:var(--text);
+      cursor:pointer; gap:10px; font-weight:700;
+      transition:.15s transform, .15s background, .15s border;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.18)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2)); border:0; color:#1b120a}
+    .btn.primary:hover{filter:brightness(1.02)}
+    .btn.danger{background:rgba(255,0,0,.10); border-color:rgba(255,0,0,.25)}
+    .badge{font-size:12px; color:#1b120a; background:var(--brand); padding:2px 8px; border-radius:999px; font-weight:800}
 
-.container {
-    padding: 100px 20px;
-}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(15,11,7,.70);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:10px 0; gap:10px}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.2px}
+    .logo .mark{width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand2)); display:grid; place-items:center; color:#1b120a; box-shadow: var(--shadow)}
+    .nav-links{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+    .nav a.link{padding:10px 12px; border-radius:10px; color:var(--muted)}
+    .nav a.link:hover{background:rgba(255,255,255,.05); color:var(--text)}
 
-h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
+    /* Dropdown */
+    .dd{position:relative}
+    .dd > button{
+      background:transparent; border:0; color:var(--muted);
+      padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit;
+      display:flex; align-items:center; gap:8px;
+    }
+    .dd > button:hover{background:rgba(255,255,255,.05); color:var(--text)}
+    .dd-menu{
+      position:absolute; top:44px; inset-inline-start:0;
+      min-width:240px;
+      background:rgba(22,17,12,.98);
+      border:1px solid var(--line);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:8px;
+      display:none;
+    }
+    .dd-menu a{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 10px; border-radius:10px; color:var(--muted)
+    }
+    .dd-menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .dd.open .dd-menu{display:block}
 
-p {
-    font-size: 24px;
-    margin: 10px 0;
-}
+    /* Right actions */
+    .actions{display:flex; gap:10px; align-items:center}
+    .cart-pill{display:flex; gap:8px; align-items:center}
+    .cart-count{min-width:26px; height:26px; border-radius:999px; background:rgba(255,255,255,.08); display:grid; place-items:center; font-weight:900}
 
-.button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #d4a373;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    border-radius: 8px;
-}
+    /* HERO */
+    .hero{padding:42px 0 16px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background:
+        linear-gradient(rgba(22,17,12,.82), rgba(22,17,12,.82)),
+        url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card:after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 380px at 15% 15%, rgba(212,163,115,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-card > *{position:relative; z-index:1}
+    .hero h1{margin:12px 0 10px; font-size:42px; line-height:1.2}
+    .hero p{margin:0; color:var(--muted); font-size:18px; max-width:55ch}
+    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
 
-.button:hover {
-    background-color: #b5835a;
-}
-</style>
+    .side-card{
+      background:rgba(22,17,12,.70);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .side-card h3{margin:0 0 8px}
+    .kv{display:grid; gap:10px; margin-top:10px}
+    .kv .row{display:flex; justify-content:space-between; gap:10px; padding:10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.03)}
+    .kv .row span{color:var(--muted)}
+    .kv .row b{font-weight:900}
+
+    /* TOOLBAR */
+    .toolbar{
+      margin:18px 0 10px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .field{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      flex:1;
+      min-width:220px;
+    }
+    .field input, .field select{
+      width:100%;
+      background:transparent;
+      border:0;
+      outline:none;
+      color:var(--text);
+      font-size:15px;
+    }
+    .field select option{background:#1a130c}
+    .chip{
+      padding:8px 10px; border:1px solid var(--line); border-radius:999px;
+      background:rgba(255,255,255,.03); color:var(--muted); cursor:pointer; user-select:none;
+    }
+    .chip.active{background:rgba(212,163,115,.15); border-color:rgba(212,163,115,.35); color:var(--text)}
+    .section-title{display:flex; align-items:center; justify-content:space-between; gap:10px; margin:18px 0 10px}
+    .section-title h2{margin:0; font-size:22px}
+    .section-title p{margin:0; color:var(--muted)}
+
+    /* PRODUCTS */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      background:rgba(22,17,12,.72);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: 0 14px 28px rgba(0,0,0,.28);
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+    }
+    .thumb{
+      height:160px;
+      background:
+        linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)),
+        var(--img);
+      background-size:cover;
+      background-position:center;
+    }
+    .card-body{padding:14px; display:flex; flex-direction:column; gap:10px; flex:1}
+    .meta{display:flex; gap:10px; align-items:center; justify-content:space-between}
+    .title{font-weight:900}
+    .sub{color:var(--muted); font-size:13px}
+    .price{font-weight:900}
+    .actions-row{display:flex; gap:10px; margin-top:auto}
+    .qty{
+      display:flex; gap:6px; align-items:center; border:1px solid var(--line);
+      border-radius:12px; padding:6px; background:rgba(255,255,255,.03)
+    }
+    .qty button{
+      width:32px; height:32px; border-radius:10px; border:1px solid var(--line);
+      background:rgba(255,255,255,.04); color:var(--text); cursor:pointer; font-weight:900;
+    }
+    .qty span{min-width:24px; text-align:center; font-weight:900}
+    .small{font-size:12px; color:var(--muted)}
+
+    /* CART DRAWER */
+    .drawer{
+      position:fixed; top:0; inset-inline-end:0;
+      width:min(420px, 92vw);
+      height:100vh;
+      background:rgba(18,13,9,.98);
+      border-inline-start:1px solid var(--line);
+      box-shadow: var(--shadow);
+      transform: translateX(-105%); /* RTL: end is left visually; we'll handle in JS */
+      transition: .2s transform;
+      z-index:100;
+      display:flex; flex-direction:column;
+    }
+    html[dir="rtl"] .drawer{transform: translateX(105%)} /* hide to the right in RTL */
+    .drawer.open{transform: translateX(0)}
+    .drawer-header{
+      padding:14px;
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom:1px solid var(--line);
+    }
+    .drawer-header h3{margin:0}
+    .drawer-body{padding:14px; overflow:auto; display:flex; flex-direction:column; gap:10px}
+    .item{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .item b{display:block}
+    .item .muted{color:var(--muted); font-size:13px}
+    .drawer-footer{
+      padding:14px;
+      border-top:1px solid var(--line);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .total{display:flex; justify-content:space-between; font-weight:900}
+    .overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,.55);
+      z-index:90; display:none;
+    }
+    .overlay.show{display:block}
+
+    /* SECTIONS */
+    .section{padding:10px 0 22px}
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .info{
+      background:rgba(22,17,12,.70);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .info h3{margin:0 0 10px}
+    .info p{margin:0; color:var(--muted)}
+    .list{margin:10px 0 0; padding:0 18px; color:var(--muted)}
+    footer{border-top:1px solid var(--line); padding:18px 0 30px; color:var(--muted)}
+    footer .row{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+
+    /* RESPONSIVE */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns: repeat(2, 1fr)}
+      .two-col{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns: 1fr}
+      .hero h1{font-size:32px}
+      .nav-links{display:none} /* keep it simple on mobile */
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <!-- NAVBAR -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="mark">☕</div>
+          <div>
+            <div style="font-size:16px;">بن الحفناوي <span class="badge">خبراء القهوة</span></div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">المقطم - الهضبة الوسطى</div>
+          </div>
+        </div>
 
-<h1>☕ بن الحفناوي<
+        <div class="nav-links">
+          <a class="link" href="#products">المنتجات</a>
+
+          <div class="dd" data-dd>
+            <button type="button" aria-expanded="false">الأقسام ▾</button>
+            <div class="dd-menu" role="menu">
+              <a href="#beans">حبوب البن <span class="pill" style="padding:2px 8px; font-size:12px;">Bean</span></a>
+              <a href="#ground">بن مطحون <span class="pill" style="padding:2px 8px; font-size:12px;">Ground</span></a>
+              <a href="#capsules">كبسولات <span class="pill" style="padding:2px 8px; font-size:12px;">Caps</span></a>
+              <a href="#tools">أدوات وتحضير <span class="pill" style="padding:2px 8px; font-size:12px;">Gear</span></a>
+            </div>
+          </div>
+
+          <div class="dd" data-dd>
+            <button type="button" aria-expanded="false">الخدمات ▾</button>
+            <div class="dd-menu" role="menu">
+              <a href="#services">تحميص يومي</a>
+              <a href="#services">طحن حسب الطلب</a>
+              <a href="#services">توريد للمقاهي</a>
+            </div>
+          </div>
+
+          <a class="link" href="#about">عنّا</a>
+          <a class="link" href="#contact">التواصل</a>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="tel:01122296566" title="اتصال">📞 اتصال</a>
+          <button class="btn primary cart-pill" id="openCart" type="button" title="السلة">
+            🛒 السلة <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="pill">✅ تحميص يومي • ✅ طحن حسب الطلب • ✅ توريد للمقاهي</span>
+          <h1>قهوة تليق بالذوق… من <span style="color:var(--brand)">خبراء القهوة</span></h1>
+          <p>
+            اختر نوع البن، درجة التحميص، والطحن المناسب. هنساعدك توصل لأفضل طعم حسب طريقتك
+            (إسبريسو – فلتر – تركي).
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#products">ابدأ التسوق</a>
+            <a class="btn" href="#services">الخدمات</a>
+            <a class="btn" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener">واتساب</a>
+          </div>
+
+          <div style="margin-top:14px; color:var(--muted); font-size:13px;">
+            📍 المقطم - الهضبة الوسطى • 🕒 يومياً من 6 صباحاً حتى 1 ليلاً • 📞 01122296566
+          </div>
+        </div>
+
+        <div class="side-card">
+          <h3>طلب سريع</h3>
+          <div class="kv">
+            <div class="row"><span>رقم الهاتف</span><b>01122296566</b></div>
+            <div class="row"><span>مواعيد العمل</span><b>6 ص → 1 ل</b></div>
+            <div class="row"><span>المنطقة</span><b>المقطم</b></div>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn primary" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA" target="_blank" rel="noopener">اطلب الأسعار واتساب</a>
+            <a class="btn" href="#contact">عنواننا</a>
+          </div>
+
+          <div style="margin-top:12px" class="small">
+            * دي صفحة تجريبية — تقدر تضيف منتجاتك وأسعارك بنفسك بسهولة من قسم “قائمة المنتجات” تحت.
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar" id="products">
+        <div class="field" title="بحث">
+          🔎
+          <input id="searchInput" type="search" placeholder="ابحث عن منتج... (مثال: إسبريسو / تركي / فلتر)" />
+        </div>
+
+        <div class="field" title="فلتر القسم">
+          🧩
+          <select id="categorySelect">
+            <option value="all">كل الأقسام</option>
+            <option value="beans">حبوب البن</option>
+            <option value="ground">بن مطحون</option>
+            <option value="capsules">كبسولات</option>
+            <option value="tools">أدوات وتحضير</option>
+          </select>
+        </div>
+
+        <div class="chip active" data-sort="featured">الأكثر طلباً</div>
+        <div class="chip" data-sort="priceAsc">الأقل سعراً</div>
+        <div class="chip" data-sort="priceDesc">الأعلى سعراً</div>
+      </div>
+
+      <div class="section-title">
+        <div>
+          <h2>قائمة المنتجات</h2>
+          <p>اضغط “أضف للسلة” — وبعدها “إرسال الطلب واتساب”.</p>
+        </div>
+        <div class="pill">💡 لتعديل المنتجات: ابحث عن <b>PRODUCTS</b> داخل الكود</div>
+      </div>
+
+      <div class="grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- SECTIONS -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="two-col">
+        <div class="info">
+          <h3>خدماتنا</h3>
+          <p>بن الحفناوي يقدم تجربة كاملة من اختيار البن وحتى التحضير.</p>
+          <ul class="list">
+            <li>تحميص يومي بدرجات مختلفة (فاتح/وسط/غامق)</li>
+            <li>طحن حسب طريقة التحضير (تركي/إسبريسو/فلتر)</li>
+            <li>توريد للمقاهي والمكاتب</li>
+          </ul>
+        </div>
+        <div class="info" id="about">
+          <h3>عن بن الحفناوي</h3>
+          <p>
+            هدفنا نوصل لك طعم ثابت وجودة عالية. تقدر تبدأ بمنتج واحد، وبعدها نزبط لك اختيارات تناسب ذوقك.
+          </p>
+          <ul class="list">
+            <li>خبراء القهوة</li>
+            <li>اختيارات متنوعة</li>
+            <li>خدمة عملاء سريعة</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="two-col">
+        <div class="info">
+          <h3>التواصل</h3>
+          <p>📍 العنوان: المقطم - الهضبة الوسطى</p>
+          <p>📞 الهاتف: <a class="btn" style="margin-top:10px" href="tel:01122296566">اتصال 01122296566</a></p>
+          <p style="margin-top:10px">🕒 يومياً من 6 صباحاً حتى 1 ليلاً</p>
+          <a class="btn primary" style="margin-top:10px" href="https://wa.me/201122296566?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%81%D9%86%D8%A7%D9%88%D9%8A%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8" target="_blank" rel="noopener">واتساب مباشر</a>
+        </div>
+
+        <div class="info">
+          <h3>ملاحظة مهمة</h3>
+          <p>
+            GitHub Pages موقع ثابت (Static) — ممتاز لعرض المنتجات والأسعار واستقبال الطلبات عبر واتساب/اتصال.
+            لو عايز دفع أونلاين وشحن وتتبع طلبيات، ساعتها نحتاج منصة متجر (Shopify / WooCommerce) أو Backend.
+          </p>
+          <ul class="list">
+            <li>حاليًا: كتالوج + سلة + إرسال واتساب ✅</li>
+            <li>مستقبلاً: دفع إلكتروني + شحن + لوحة تحكم</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div>© <span id="year"></span> بن الحفناوي — خبراء القهوة</div>
+        <div>الهاتف: 01122296566 • المقطم - الهضبة الوسطى</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART UI -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer-header">
+      <h3>🛒 سلة المشتريات</h3>
+      <button class="btn" id="closeCart" type="button">إغلاق</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-footer">
+      <div class="total">
+        <span>الإجمالي</span>
+        <span id="cartTotal">0</span>
+      </div>
+      <button class="btn primary" id="sendWhatsApp" type="button">إرسال الطلب واتساب</button>
+      <button class="btn danger" id="clearCart" type="button">تفريغ السلة</button>
+      <div class="small">* الأسعار هنا للتجربة. تقدر تغيرها بسهولة من قسم PRODUCTS داخل الكود.</div>
+    </div>
+  </aside>
+
+  <script>
+    // ========= SETTINGS =========
+    const PHONE_LOCAL = "01122296566";
+    const PHONE_WA = "201122296566"; // for wa.me
+
+    // ========= PRODUCTS =========
+    // عدّل هنا: أضف/احذف منتجاتك بسهولة
+    // fields: id, name, category(beans/ground/capsules/tools), price, unit, featured(true/false), note, img
+    const PRODUCTS = [
+      {
+        id: "b1",
+        name: "بن إسبريسو (حبوب)",
+        category: "beans",
+        price: 240,
+        unit: "250 جم",
+        featured: true,
+        note: "تحميص وسط مناسب للإسبريسو",
+        img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "b2",
+        name: "بن فلتر (حبوب)",
+        category: "beans",
+        price: 220,
+        unit: "250 جم",
+        featured: true,
+        note: "تحميص فاتح للـ V60 والفلتر",
+        img: "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "g1",
+        name: "بن تركي (مطحون)",
+        category: "ground",
+        price: 190,
+        unit: "250 جم",
+        featured: true,
+        note: "طحن ناعم حسب الطلب",
+        img: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "g2",
+        name: "بن سادة (مطحون)",
+        category: "ground",
+        price: 180,
+        unit: "250 جم",
+        featured: false,
+        note: "مناسب للقهوة اليومية",
+        img: "https://images.unsplash.com/photo-1506224774225-9b2f3a74c1b0?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "c1",
+        name: "كبسولات إسبريسو",
+        category: "capsules",
+        price: 260,
+        unit: "10 كبسولات",
+        featured: false,
+        note: "متوافقة مع ماكينات كبسولات شائعة",
+        img: "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: "t1",
+        name: "مطحنة يدوية",
+        category: "tools",
+        price: 450,
+        unit: "قطعة",
+        featured: false,
+        note: "مناسبة للسفر والتحضير المنزلي",
+        img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80"
+      }
+    ];
+
+    // ========= STATE =========
+    const cart = new Map(); // id -> qty
+    let activeSort = "featured";
+
+    // ========= HELPERS =========
+    const fmt = (n) => `${n} جنيه`;
+    const getProduct = (id) => PRODUCTS.find(p => p.id === id);
+
+    function cartCount(){
+      let count = 0;
+      cart.forEach(q => count += q);
+      return count;
+    }
+
+    function cartTotal(){
+      let total = 0;
+      cart.forEach((q, id) => {
+        const p = getProduct(id);
+        total += (p?.price || 0) * q;
+      });
+      return total;
+    }
+
+    // ========= UI: PRODUCTS =========
+    const grid = document.getElementById("productGrid");
+    const searchInput = document.getElementById("searchInput");
+    const categorySelect = document.getElementById("categorySelect");
+    const chips = Array.from(document.querySelectorAll(".chip"));
+
+    function matchesFilters(p){
+      const q = (searchInput.value || "").trim().toLowerCase();
+      const cat = categorySelect.value;
+      const text = `${p.name} ${p.note} ${p.unit}`.toLowerCase();
+      const okQuery = !q || text.includes(q);
+      const okCat = (cat === "all") || (p.category === cat);
+      return okQuery && okCat;
+    }
+
+    function sortProducts(list){
+      const copy = [...list];
+      if(activeSort === "featured"){
+        copy.sort((a,b) => (b.featured === true) - (a.featured === true));
+      } else if(activeSort === "priceAsc"){
+        copy.sort((a,b) => a.price - b.price);
+      } else if(activeSort === "priceDesc"){
+        copy.sort((a,b) => b.price - a.price);
+      }
+      return copy;
+    }
+
+    function renderProducts(){
+      const filtered = PRODUCTS.filter(matchesFilters);
+      const sorted = sortProducts(filtered);
+
+      grid.innerHTML = "";
+      if(sorted.length === 0){
+        grid.innerHTML = `<div class="info" style="grid-column:1/-1">لا توجد نتائج للبحث الحالي.</div>`;
+        return;
+      }
+
+      for(const p of sorted){
+        const qty = cart.get(p.id) || 0;
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="thumb" style="--img:url('${p.img}')"></div>
+          <div class="card-body">
+            <div class="meta">
+              <div>
+                <div class="title">${p.name}</div>
+                <div class="sub">${p.unit} • ${labelCategory(p.category)}</div>
+              </div>
+              <div class="price">${fmt(p.price)}</div>
+            </div>
+            <div class="small">${p.note || ""}</div>
+
+            <div class="actions-row">
+              <div class="qty" aria-label="الكمية">
+                <button type="button" data-dec="${p.id}">-</button>
+                <span id="qty-${p.id}">${qty}</span>
+                <button type="button" data-inc="${p.id}">+</button>
+              </div>
+              <button class="btn primary" type="button" data-add="${p.id}">أضف للسلة</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      }
+    }
+
+    function labelCategory(cat){
+      return cat === "beans" ? "حبوب" :
+             cat === "ground" ? "مطحون" :
+             cat === "capsules" ? "كبسولات" :
+             cat === "tools" ? "أدوات" : cat;
+    }
+
+    // ========= UI: CART =========
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("overlay");
+    const openCartBtn = document.getElementById("openCart");
+    const closeCartBtn = document.getElementById("closeCart");
+    const cartItems = document.getElementById("cartItems");
+    const cartCountEl = document.getElementById("cartCount");
+    const cartTotalEl = document.getElementById("cartTotal");
+    const clearCartBtn = document.getElementById("clearCart");
+    const sendWhatsAppBtn = document.getElementById("sendWhatsApp");
+
+    function openCart(){
+      drawer.classList.add("open");
+      overlay.classList.add("show");
+      renderCart();
+    }
+    function closeCart(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("show");
+    }
+
+    function renderCart(){
+      cartCountEl.textContent = cartCount();
+      cartTotalEl.textContent = fmt(cartTotal());
+
+      if(cart.size === 0){
+        cartItems.innerHTML = `<div class="info">السلة فارغة. ابدأ بإضافة منتجات.</div>`;
+        return;
+      }
+
+      let html = "";
+      cart.forEach((q, id) => {
+        const p = getProduct(id);
+        if(!p) return;
+        html += `
+          <div class="item">
+            <div>
+              <b>${p.name}</b>
+              <div class="muted">${p.unit} • ${fmt(p.price)} للواحد</div>
+              <div class="muted">الكمية: <b style="display:inline">${q}</b> • الإجمالي: <b style="display:inline">${fmt(p.price*q)}</b></div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px; align-items:stretch">
+              <button class="btn" type="button" data-cart-dec="${id}">-</button>
+              <button class="btn" type="button" data-cart-inc="${id}">+</button>
+              <button class="btn danger" type="button" data-cart-del="${id}">حذف</button>
+            </div>
+          </div>
+        `;
+      });
+      cartItems.innerHTML = html;
+    }
+
+    function setQty(id, qty){
+      if(qty <= 0) cart.delete(id);
+      else cart.set(id, qty);
+
+      // update qty badge in product card if exists
+      const span = document.getElementById(`qty-${id}`);
+      if(span) span.textContent = cart.get(id) || 0;
+
+      cartCountEl.textContent = cartCount();
+      cartTotalEl.textContent = fmt(cartTotal());
+    }
+
+    // ========= EVENTS =========
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+
+      // Dropdown toggle
+      const ddBtn = t.closest?.("[data-dd] > button");
+      if(ddBtn){
+        const dd = ddBtn.parentElement;
+        const isOpen = dd.classList.contains("open");
+        document.querySelectorAll("[data-dd].open").forEach(x => x.classList.remove("open"));
+        if(!isOpen) dd.classList.add("open");
+        return;
+      }
+
+      // close dropdown if clicked elsewhere
+      if(!t.closest?.("[data-dd]")){
+        document.querySelectorAll("[data-dd].open").forEach(x => x.classList.remove("open"));
+      }
+
+      // product qty inc/dec
+      const incId = t.getAttribute?.("data-inc");
+      const decId = t.getAttribute?.("data-dec");
+      const addId = t.getAttribute?.("data-add");
+      if(incId){
+        setQty(incId, (cart.get(incId)||0) + 1);
+        renderCart();
+      }
+      if(decId){
+        setQty(decId, (cart.get(decId)||0) - 1);
+        renderCart();
+      }
+      if(addId){
+        setQty(addId, (cart.get(addId)||0) + 1);
+        openCart();
+      }
+
+      // cart buttons
+      const cInc = t.getAttribute?.("data-cart-inc");
+      const cDec = t.getAttribute?.("data-cart-dec");
+      const cDel = t.getAttribute?.("data-cart-del");
+      if(cInc){ setQty(cInc, (cart.get(cInc)||0) + 1); renderCart(); }
+      if(cDec){ setQty(cDec, (cart.get(cDec)||0) - 1); renderCart(); }
+      if(cDel){ cart.delete(cDel); renderCart(); }
+
+      // open/close cart
+      if(t === openCartBtn) openCart();
+      if(t === closeCartBtn) closeCart();
+      if(t === overlay) closeCart();
+
+      // sort chips
+      const chip = t.closest?.(".chip");
+      if(chip){
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        activeSort = chip.getAttribute("data-sort");
+        renderProducts();
+      }
+    });
+
+    searchInput.addEventListener("input", renderProducts);
+    categorySelect.addEventListener("change", renderProducts);
+
+    clearCartBtn.addEventListener("click", () => {
+      cart.clear();
+      renderProducts();
+      renderCart();
+    });
+
+    sendWhatsAppBtn.addEventListener("click", () => {
+      if(cart.size === 0){
+        alert("السلة فارغة. أضف منتجات أولاً.");
+        return;
+      }
+      // build message
+      let msg = `طلب جديد من موقع بن الحفناوي%0A%0A`;
+      cart.forEach((q, id) => {
+        const p = getProduct(id);
+        if(!p) return;
+        msg += `• ${p.name} (${p.unit}) x${q} = ${p.price*q} جنيه%0A`;
+      });
+      msg += `%0Aالإجمالي: ${cartTotal()} جنيه%0A`;
+      msg += `%0Aالاسم: ______%0Aالعنوان: ______%0Aملاحظات: ______`;
+
+      const url = `https://wa.me/${PHONE_WA}?text=${msg}`;
+      window.open(url, "_blank", "noopener");
+    });
+
+    // ========= INIT =========
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fix drawer direction in RTL (we used CSS, but keep safe)
+    function initDrawer(){
+      // no-op; CSS handles.
+    }
+    initDrawer();
+    renderProducts();
+    renderCart();
+  </script>
+
+</body>
+</html>
 
