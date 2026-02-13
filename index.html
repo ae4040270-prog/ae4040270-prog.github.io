@@ -7,31 +7,17 @@
   <meta name="description" content="بن الحفناوي - خبراء القهوة. تحميص يومي، طحن حسب الطلب. المقطم - الهضبة الوسطى." />
 
   <style>
-  :root{
-  --bg:#F3E7D6;        /* 1) Background */
-  --card:#FFF7EA;      /* 2) Card */
-  --card2:#F1E3CF;     /* 3) Card Secondary */
-  --text:#102A23;      /* 4) Main text */
-  --muted:#2F4B3F;     /* 5) Secondary text */
-  --gold:#C79A2B;      /* 6) Accent gold */
-  --line:#D7C5A8;      /* 7) Borders */
-
-  /* باقي المتغيرات زي ما هي */
-  --gold2:#E2C35A;
-  --shadow:0 16px 40px rgba(0,0,0,.10);
-  --shadow2:0 10px 25px rgba(0,0,0,.08);
-  --r:18px;
-}
-
-  --gold2:#E2C35A;
-  --shadow:0 16px 40px rgba(0,0,0,.10);
-  --shadow2:0 10px 25px rgba(0,0,0,.08);
-  --r:18px;
-}
-
-      --shadow:0 16px 40px rgba(0,0,0,.10);
-      --shadow2:0 10px 25px rgba(0,0,0,.08);
-      --r:18px;
+    :root{
+      --bg:#F6F1E6;      /* بيج فاتح */
+      --card:#EFE6D7;    /* بيج أغمق للكروت */
+      --text:#0F3D2E;    /* أخضر غامق */
+      --muted:#2D5B47;   /* أخضر ثانوي */
+      --gold:#C9A227;    /* ذهبي */
+      --gold2:#E2C35A;   /* ذهبي فاتح */
+      --line:#D9CDBB;    /* حدود */
+      --shadow: 0 16px 40px rgba(0,0,0,.10);
+      --shadow2: 0 10px 25px rgba(0,0,0,.08);
+      --r: 18px;
     }
 
     *{box-sizing:border-box}
@@ -41,7 +27,7 @@
       color:var(--text);
       background:
         radial-gradient(900px 520px at 12% 0%, rgba(201,162,39,.18), transparent 60%),
-        radial-gradient(760px 520px at 100% 12%, rgba(15,61,46,.10), transparent 55%),
+        radial-gradient(760px 520px at 100% 10%, rgba(15,61,46,.10), transparent 55%),
         var(--bg);
       line-height:1.75;
       overflow-x:hidden;
@@ -57,16 +43,15 @@
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-      padding:12px 0;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
       min-width:260px;
     }
     .brand img{
-      height:56px; width:56px;
-      object-fit:cover;
+      height:56px; width:auto;
       border-radius:14px;
       background:#fff;
       border:1px solid var(--line);
@@ -78,404 +63,246 @@
     .badge{
       display:inline-flex; align-items:center;
       padding:4px 10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color:#1b160a;
+      background: linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#1b120a;
       font-weight:900;
       font-size:12px;
-      margin-inline-start:8px;
+      margin-right:8px;
     }
-
-    .links{
-      display:flex; gap:6px; flex-wrap:wrap; justify-content:center;
-    }
-    .links a{
-      padding:10px 12px; border-radius:12px;
-      color:var(--muted);
+    .nav-links{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+    .nav a.link{
+      padding:10px 12px; border-radius:12px; color:var(--muted);
       border:1px solid transparent;
-      font-weight:700;
+      transition:.2s;
+      font-weight:800;
+      font-size:13px;
     }
-    .links a:hover{
-      background:rgba(201,162,39,.10);
+    .nav a.link:hover{
+      background:rgba(255,255,255,.55);
       border-color:var(--line);
       color:var(--text);
     }
-
-    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 14px; border-radius:14px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.65);
-      cursor:pointer;
-      font-weight:900;
+      background:rgba(255,255,255,.55);
       box-shadow: var(--shadow2);
-      transition: transform .15s ease, filter .15s ease;
+      font-weight:900;
+      gap:8px;
+      transition:.2s;
     }
-    .btn:hover{transform: translateY(-1px);filter:brightness(1.02)}
-    .btn.primary{
-      border:0;
-      background: linear-gradient(135deg, var(--text), #0A2F22);
-      color:#fff;
-    }
+    .btn:hover{transform:translateY(-1px)}
     .btn.gold{
-      border:0;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color:#1b160a;
-      padding:12px 18px;
+      border-color: transparent;
+      background: linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#1b120a;
     }
-/* ===== About section PRO layout ===== */
-#about .grid{
-  gap:18px;
-  align-items:stretch;
-}
 
-#about .card{
-  background: rgba(255,255,255,.72);
-}
-
-#about .card.col-4{
-  position:sticky;
-  top:88px; /* تحت الناف */
-  height:fit-content;
-}
-
-.quick-cards{
-  display:grid;
-  gap:12px;
-}
-
-.qcard{
-  background: rgba(255,255,255,.75);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:14px 14px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
-}
-
-.qhead{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  gap:10px;
-  margin-bottom:10px;
-  color:var(--muted);
-  font-weight:900;
-  font-size:13px;
-}
-
-.qicon{
-  width:34px;
-  height:34px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: rgba(201,162,39,.15);
-  border:1px solid var(--line);
-  font-size:16px;
-}
-
-.qvalue{
-  font-weight:900;
-  font-size:18px;
-  color:var(--text);
-  line-height:1.35;
-}
-
-.qvalue.big{
-  font-size:22px;
-  letter-spacing:.5px;
-}
-
-/* Right content typography */
-#about .card.col-8 .pad{
-  padding:22px;
-}
-
-.about-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:10px;
-}
-
-.about-title h3{
-  margin:0;
-  font-size:22px;
-  letter-spacing:.2px;
-}
-
-.about-desc{
-  margin:0;
-  color:var(--muted);
-  font-size:15.5px;
-  line-height:1.9;
-  max-width:80ch;
-}
-
-.about-points{
-  margin:16px 0 0;
-  padding:0;
-  list-style:none;
-  display:grid;
-  gap:10px;
-}
-
-.about-points li{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:12px 12px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.55);
-}
-
-.about-points li .bullet{
-  width:28px;
-  height:28px;
-  border-radius:10px;
-  background: linear-gradient(135deg, var(--gold), var(--gold2));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#1b160a;
-  font-weight:900;
-  flex:0 0 auto;
-  margin-top:2px;
-}
-
-/* Mobile */
-@media (max-width: 980px){
-  #about .card.col-4{
-    position:relative;
-    top:auto;
-  }
-}
-
-    /* =========================
-       HERO (Professional)
-       ========================= */
+    /* HERO (Video Background) */
     .hero{
       position:relative;
-      height:92vh;
-      min-height:560px;
-      overflow:hidden;
+      min-height: 520px;
       border-bottom:1px solid var(--line);
-      isolation:isolate;
+      overflow:hidden;
     }
     .hero video{
       position:absolute; inset:0;
       width:100%; height:100%;
       object-fit:cover;
-      filter:brightness(.62) saturate(1.12) contrast(1.02);
+      filter:saturate(1.05) contrast(1.05);
       transform:scale(1.02);
     }
     .hero-overlay{
       position:absolute; inset:0;
       background:
-        radial-gradient(900px 520px at 20% 20%, rgba(0,0,0,.28), transparent 60%),
-        linear-gradient(to bottom, rgba(0,0,0,.68), rgba(0,0,0,.70));
-      z-index:1;
+        linear-gradient(180deg, rgba(15,61,46,.70) 0%, rgba(15,61,46,.55) 45%, rgba(246,241,230,.20) 100%);
     }
     .hero-content{
       position:relative; z-index:2;
-      height:100%;
-      display:flex; align-items:center;
-      padding: 28px 0;
-      color:#fff;
+      padding:42px 0 56px;
     }
     .hero-box{
-      width:min(820px, 100%);
-      margin-inline:auto;
-      text-align:center;
-      background: linear-gradient(145deg, rgba(0,0,0,.55), rgba(0,0,0,.42));
-      border:1px solid rgba(255,255,255,.18);
-      border-radius: 26px;
-      padding: 28px 22px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 26px 80px rgba(0,0,0,.35);
-      animation: heroIn .9s ease both;
-    }
-
-    @keyframes heroIn{
-      from{opacity:0; transform:translateY(16px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-
-    .hero-logo{
-      width:108px;
-      height:108px;
-      object-fit:cover;
-      border-radius:26px;
-      background:#fff;
-      padding:10px;
-      border:1px solid rgba(255,255,255,.22);
-      box-shadow: 0 18px 48px rgba(0,0,0,.45);
-      margin: 0 auto 14px;
-      animation: floaty 5s ease-in-out infinite;
-    }
-    @keyframes floaty{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-8px)}
-    }
-
-    .hero-title{
-      font-size:54px;
-      font-weight:900;
-      line-height:1.12;
-      margin: 6px 0 8px;
-      letter-spacing:.2px;
-    }
-
-    /* visual hierarchy for sub text */
-    .hero-sub{
+      max-width: 860px;
       margin: 0 auto;
-      max-width: 70ch;
-      font-size:18px;
-      font-weight:700;
-      color: rgba(255,255,255,.92);
+      text-align:center;
+      padding: 28px 18px;
+      border-radius: 26px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.20);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+      color:#fff;
     }
-    .hero-sub small{
-      display:block;
-      margin-top:10px;
-      font-size:16px;
-      font-weight:500;
-      color: rgba(255,255,255,.82);
-      letter-spacing:.3px;
-    }
-
-    /* nicer CTA spacing */
-    .hero-cta{
-      display:flex; gap:14px; flex-wrap:wrap;
-      justify-content:center;
-      margin-top:22px;
-    }
-
-    /* ====== SECTIONS ====== */
-    .section{padding:56px 0}
-    .titlebar{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
+    .hero-logo{
+      height:78px; width:auto;
+      border-radius:18px;
+      background:#fff;
+      padding:8px;
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
       margin-bottom:14px;
     }
-    .titlebar h2{margin:0;font-size:24px}
-    .titlebar p{margin:0;color:var(--muted)}
-    .card{
-      background: rgba(255,255,255,.55);
+    .hero-title{
+      font-weight:900;
+      font-size:44px;
+      letter-spacing:.2px;
+      margin: 0 0 8px;
+    }
+    .hero-sub{
+      color: rgba(255,255,255,.9);
+      font-weight:700;
+      margin:0;
+    }
+    .hero-sub small{display:block; opacity:.95; margin-top:6px}
+    .hero-cta{
+      margin-top:16px;
+      display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+    }
+
+    /* MID SECTION (Center) */
+    .mid-wrap{padding:28px 0 44px;}
+    .mid-grid{
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:22px;
+      align-items:start;
+    }
+    .mid-card{
+      background:rgba(255,255,255,.55);
       border:1px solid var(--line);
-      border-radius: var(--r);
+      border-radius:22px;
       box-shadow: var(--shadow2);
       overflow:hidden;
     }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-    }
-    .col-4{grid-column: span 4}
-    .col-6{grid-column: span 6}
-    .col-8{grid-column: span 8}
-    .col-12{grid-column: span 12}
-
-    .pad{padding:16px}
-    .kicker{
-      display:inline-block;
+    .mid-card .pad{padding:18px;}
+    .mid-title{
+      font-size:22px;
       font-weight:900;
-      color:#1b160a;
-      background: rgba(201,162,39,.18);
-      border:1px solid var(--line);
-      padding:6px 10px;
-      border-radius: 999px;
-      font-size:12px;
+      color:var(--text);
+      margin:0 0 10px;
     }
-    .muted{color:var(--muted)}
-    .list{margin:10px 0 0; padding:0 18px}
-    .list li{margin:6px 0}
+    .mid-lead{color:var(--muted); line-height:1.9; margin:0 0 12px;}
+    .mid-bullets{
+      margin:0; padding:0 18px;
+      color:var(--text);
+      line-height:1.9;
+    }
+    .mid-bullets li{margin:6px 0;}
+    .mid-bullets b{color:var(--muted);}
 
-    /* Roast cards */
-    .roast{
-      display:flex; gap:12px; align-items:flex-start;
+    /* quick cards */
+    .quick{display:grid; gap:12px;}
+    .quick .q{
+      background:rgba(255,255,255,.6);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    .dot{
-      width:14px; height:14px; border-radius:999px;
-      margin-top:6px;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(201,162,39,.18);
+    .quick .q .k{color:var(--muted); font-weight:800; font-size:13px;}
+    .quick .q .v{color:var(--text); font-weight:900; font-size:16px;}
+    .quick .q .ico{
+      width:42px; height:42px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#1b120a;
+      box-shadow: var(--shadow2);
       flex:0 0 auto;
     }
-    .roast b{display:block;margin-bottom:4px}
 
-    /* Gallery */
-    .thumb{
+    /* MEDIA inside the mid section (Autoplay small + consistent) */
+    .media-grid{
+      display:flex;
+      justify-content:center;
+      align-items:stretch;
+      gap:18px;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+    .media-card{
+      width:300px;
+      background:var(--card);
+      padding:12px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      text-align:center;
+      transition:.25s;
+    }
+    .media-card:hover{transform:translateY(-4px);}
+    .auto-video{
+      width:100%;
       height:190px;
-      background:
-        linear-gradient(180deg, rgba(15,61,46,.08), rgba(201,162,39,.08)),
-        var(--img);
-      background-size: cover;
-      background-position: center;
-      border-bottom:1px solid var(--line);
+      object-fit:cover;
+      border-radius:16px;
+      display:block;
+      background:#000;
     }
-
-    /* FAQ */
-    details{
-      border-top:1px solid var(--line);
-      padding:12px 0;
+    .media-card img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      border-radius:16px;
+      display:block;
     }
-    details:first-child{border-top:0}
-    summary{
-      cursor:pointer;
+    .media-card .cap{
+      margin-top:10px;
       font-weight:900;
-      list-style:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0;color:var(--muted)}
-
-    /* Contact */
-    .contact-box{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
+      color:var(--text);
+      font-size:13px;
     }
 
-    /* Footer */
-    footer{
-      border-top:1px solid var(--line);
-      padding:18px 0 30px;
+    .benefits-mini{
+      margin-top:14px;
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(201,162,39,.10);
+    }
+    .benefits-mini ul{
+      margin:10px 0 0;
+      padding:0 18px;
       color:var(--muted);
+      line-height:1.9;
     }
-    .footer-row{
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    .note{margin-top:8px;font-size:12px;color:var(--muted);}
+
+    /* Footer contact */
+    footer{
+      padding:20px 0 30px;
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.35);
     }
 
-    /* Floating WhatsApp */
-    .float-wa{
+    /* WhatsApp floating */
+    .wa{
       position:fixed;
       left:16px;
       bottom:16px;
       z-index:999;
-      border:0;
-      border-radius: 999px;
-      padding:12px 14px;
-      background: linear-gradient(135deg, var(--text), #0A2F22);
+      width:64px;height:64px;
+      border-radius:999px;
+      display:grid;place-items:center;
+      background:var(--text);
       color:#fff;
+      box-shadow: var(--shadow);
       font-weight:900;
-      box-shadow: 0 18px 40px rgba(0,0,0,.20);
     }
+    .wa:hover{transform:translateY(-2px)}
 
     /* Responsive */
     @media (max-width: 980px){
-      .links{display:none}
-      .hero-title{font-size:40px}
-      .col-4{grid-column: span 6}
-      .col-6,.col-8{grid-column: span 12}
-    }
-    @media (max-width: 520px){
-      .hero-title{font-size:32px}
-      .col-4{grid-column: span 12}
-      .brand{min-width:unset}
-      .hero-logo{width:92px;height:92px;border-radius:22px}
-      .hero-sub{font-size:16px}
-      .hero-sub small{font-size:14px}
+      .mid-grid{grid-template-columns:1fr;}
+      .hero-title{font-size:34px;}
+      .brand{min-width:auto}
+      .media-card{width:min(340px,100%);}
+      .auto-video,.media-card img{height:220px;}
     }
   </style>
 </head>
@@ -486,34 +313,30 @@
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
+
         <div class="brand">
           <img src="bn.jfif" alt="بن الحفناوي">
           <div>
             <div class="name">بن الحفناوي <span class="badge">خبراء القهوة</span></div>
-            <div class="sub">المقطم - الهضبة الوسطى</div>
+            <div class="sub">المقطم – الهضبة الوسطى</div>
           </div>
         </div>
 
-        <div class="links">
-          <a href="#about">عنّا</a>
-          <a href="#roasts">درجات التحميص</a>
-          <a href="#benefits">فوائد البن</a>
-          <a href="#gallery">المعرض</a>
-          <a href="#faq">أسئلة شائعة</a>
-          <a href="#contact">التواصل</a>
+        <div class="nav-links">
+          <a class="link" href="#top">الرئيسية</a>
+          <a class="link" href="#about">عنّا</a>
+          <a class="link" href="#contact">تواصل</a>
+          <a class="btn gold" href="tel:01122296566">📞 اتصال</a>
         </div>
 
-        <div class="actions">
-          <a class="btn" href="tel:01122296566">📞 اتصال</a>
-          <a class="btn primary" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
-        </div>
       </div>
     </div>
   </div>
 
   <!-- HERO VIDEO -->
   <header class="hero" id="top">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline preload="auto">
+      <!-- ✅ ده الفيديو القديم بتاع الهيرو (سيبه زي ما هو لو عندك غيره) -->
       <source src="31383-385863273_medium.mp4" type="video/mp4">
     </video>
 
@@ -523,35 +346,18 @@
       <div class="container">
         <div class="hero-box">
 
-         <h1 style="
-display:flex;
-align-items:center;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-">
+          <img class="hero-logo" src="bn.jfif" alt="لوجو بن الحفناوي">
 
-  <img src="bn.jfif"
-       alt="لوجو بن الحفناوي"
-       style="height:60px;width:auto;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.4);">
+          <h1 class="hero-title">بن الحفناوي</h1>
 
-  <span style="font-size:40px;font-weight:900;">
-    بن الحفناوي… هوية قهوة بثقة
-  </span>
-
-</h1>
-          <div class="hero-sub">
+          <p class="hero-sub">
             تحميص يومي • طحن حسب الطلب • جودة ثابتة
-            <small>إسبريسو • فلتر • تركي</small>
-          </div>
+            <small>المقطم – الهضبة الوسطى • من 6 صباحاً إلى 1 ليلاً</small>
+          </p>
 
           <div class="hero-cta">
-            <a class="btn gold" href="#contact">تواصل الآن</a>
-            <a class="btn" style="color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)" href="#about">اعرف أكثر</a>
-          </div>
-
-          <div style="margin-top:18px;font-size:14px;opacity:.9">
-            🕒 يومياً من 6 صباحاً حتى 1 ليلاً • 📍 المقطم - الهضبة الوسطى
+            <a class="btn gold" href="#about">اعرف أكتر</a>
+            <a class="btn" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
           </div>
 
         </div>
@@ -559,304 +365,116 @@ flex-wrap:wrap;
     </div>
   </header>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
+  <!-- MID / ABOUT (Center Section) -->
+  <section class="mid-wrap" id="about">
     <div class="container">
-      <div class="titlebar">
-        <div>
-         <!-- MEDIA (Video + Image) داخل قسم خبراء القهوة -->
-<!-- MEDIA (Video + Image) داخل قسم خبراء القهوة -->
-<div class="media-grid">
 
-  <div class="media-card">
-    <video controls playsinline preload="metadata" style="width:100%;border-radius:16px;">
-      <source src="45358-443057031.mp4" type="video/mp4">
-      المتصفح لا يدعم تشغيل الفيديو.
-    </video>
-    <div class="cap">🎬 لمحة من التحميص</div>
-  </div>
+      <div class="mid-grid">
 
-  <div class="media-card">
-    <img src="royburi-coffee-4574774_1920.jpg" 
-         alt="حبوب قهوة مختارة"
-         style="width:100%;border-radius:16px;">
-    <div class="cap">🌿 حبوب مختارة بعناية</div>
-  </div>
-
-</div>
-
-        <div class="card col-4">
+        <!-- LEFT: QUICK DATA -->
+        <div class="mid-card">
           <div class="pad">
-            <b style="display:block;margin-bottom:10px;">بيانات سريعة</b>
-            <div class="card" style="box-shadow:none;background:rgba(255,255,255,.65)">
-              <div class="pad">
-                <div class="muted">📍 العنوان</div>
-                <div style="font-weight:900">المقطم - الهضبة الوسطى</div>
-              </div>
-            </div>
-            <div class="card" style="margin-top:10px;box-shadow:none;background:rgba(255,255,255,.65)">
-              <div class="pad">
-                <div class="muted">🕒 المواعيد</div>
-                <div style="font-weight:900">6 صباحاً → 1 ليلاً</div>
-              </div>
-            </div>
-            <div class="card" style="margin-top:10px;box-shadow:none;background:rgba(255,255,255,.65)">
-              <div class="pad">
-                <div class="muted">📞 الهاتف</div>
-                <div style="font-weight:900"><a href="tel:01122296566">01122296566</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <h3 class="mid-title">بيانات سريعة</h3>
 
-    </div>
-  </section>
+            <div class="quick">
 
-  <!-- ROASTS -->
-  <section class="section" id="roasts">
-    <div class="container">
-      <div class="titlebar">
-        <div>
-          <h2>درجات التحميص</h2>
-          <p>اختار الدرجة المناسبة لطريقتك وذوقك.</p>
-        </div>
-        <span class="kicker">Roast Levels</span>
-      </div>
-
-      <div class="grid">
-        <div class="card col-4">
-          <div class="pad">
-            <div class="roast">
-              <span class="dot"></span>
-              <div>
-                <b>تحميص فاتح</b>
-                <div class="muted">نكهة أوضح وحموضة خفيفة غالباً… مناسب للفلتر والـ V60.</div>
+              <div class="q">
+                <div>
+                  <div class="k">📍 العنوان</div>
+                  <div class="v">المقطم – الهضبة الوسطى</div>
+                </div>
+                <div class="ico">📌</div>
               </div>
+
+              <div class="q">
+                <div>
+                  <div class="k">⏰ المواعيد</div>
+                  <div class="v">6 صباحاً → 1 ليلاً</div>
+                </div>
+                <div class="ico">⏱️</div>
+              </div>
+
+              <div class="q">
+                <div>
+                  <div class="k">📞 الهاتف</div>
+                  <div class="v"><a href="tel:01122296566">01122296566</a></div>
+                </div>
+                <div class="ico">📞</div>
+              </div>
+
             </div>
+
           </div>
         </div>
 
-        <div class="card col-4">
+        <!-- RIGHT: ABOUT -->
+        <div class="mid-card">
           <div class="pad">
-            <div class="roast">
-              <span class="dot" style="background:#b88f1d"></span>
-              <div>
-                <b>تحميص متوسط</b>
-                <div class="muted">توازن ممتاز بين الطعم والقوة… مناسب للإسبريسو والفلتر.</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="card col-4">
-          <div class="pad">
-            <div class="roast">
-              <span class="dot" style="background:#8f6f18"></span>
-              <div>
-                <b>تحميص غامق</b>
-                <div class="muted">طعم قوي ومرارة أعلى غالباً… لعشاق القهوة الثقيلة.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <h3 class="mid-title">خبراء القهوة</h3>
+            <p class="mid-lead">
+              بن الحفناوي يهتم بجودة الحبوب، وثبات التحميص، ودقة الطحن حسب طريقة التحضير.
+              هدفنا إن كل كوب يطلع بنفس المستوى… كل مرة.
+            </p>
 
-    </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section class="section" id="benefits">
-    <div class="container">
-      <div class="titlebar">
-        <div>
-          <h2>فوائد القهوة (باعتدال)</h2>
-          <p>معلومات عامة مفيدة للعميل.</p>
-        </div>
-        <span class="kicker">معلومة</span>
-      </div>
-
-      <div class="grid">
-        <div class="card col-6">
-          <div class="pad">
-            <b>فوائد شائعة</b>
-            <ul class="list muted">
-              <li>تساعد على اليقظة والتركيز (بسبب الكافيين).</li>
-              <li>تحتوي على مضادات أكسدة طبيعية.</li>
-              <li>قد ترفع المزاج وتحسن الأداء عند بعض الأشخاص.</li>
+            <ul class="mid-bullets">
+              <li><b>تحميص يومي</b> للحفاظ على الطزاجة.</li>
+              <li><b>طحن حسب الطلب</b> (تركي / إسبرسو / فلتر).</li>
+              <li><b>اختيارات</b> تناسب الذوق الخفيف أو الثقيل.</li>
             </ul>
-            <div class="muted" style="font-size:12px;margin-top:10px;">
-              * لو عندك حساسية للكافيين/ضغط/مشاكل معدة: الأفضل استشارة مختص.
+
+            <!-- MEDIA (Autoplay small + consistent) -->
+            <div class="media-grid">
+
+              <div class="media-card">
+                <video autoplay muted loop playsinline preload="auto" class="auto-video">
+                  <source src="45358-443057031.mp4" type="video/mp4">
+                  المتصفح لا يدعم تشغيل الفيديو.
+                </video>
+                <div class="cap">🎬 لمحة من التحميص</div>
+              </div>
+
+              <div class="media-card">
+                <img src="royburi-coffee-4574774_1920.jpg" alt="حبوب قهوة مختارة">
+                <div class="cap">🫘 حبوب مختارة بعناية</div>
+              </div>
+
             </div>
-          </div>
-        </div>
 
-        <div class="card col-6">
-          <div class="pad">
-            <b>اختيار الطحن حسب الطريقة</b>
-            <ul class="list muted">
-              <li><b>إسبريسو:</b> طحن ناعم.</li>
-              <li><b>تركي:</b> ناعم جداً.</li>
-              <li><b>فلتر/V60:</b> متوسط.</li>
-            </ul>
-            <div class="muted" style="margin-top:10px;">
-              قول لنا طريقتك وهنظبط لك الطحن المناسب.
+            <!-- Benefits -->
+            <div class="benefits-mini">
+              <b>فوائد القهوة (باعتدال)</b>
+              <ul>
+                <li>تساعد على التركيز والانتباه.</li>
+                <li>تحتوي على مضادات أكسدة طبيعية.</li>
+                <li>تعزز النشاط وقد تحسن المزاج عند بعض الأشخاص.</li>
+              </ul>
+              <div class="note">* لو عندك حساسية للكافيين/ضغط/معدة: الأفضل استشارة مختص.</div>
             </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="section" id="gallery">
-    <div class="container">
-      <div class="titlebar">
-        <div>
-          <h2>المعرض</h2>
-          <p>مظهر راقي يناسب هوية براند القهوة.</p>
-        </div>
-        <span class="kicker">Gallery</span>
-      </div>
-
-      <div class="grid">
-        <div class="card col-4">
-          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1400&q=80')"></div>
-          <div class="pad">
-            <b>حبوب مختارة</b>
-            <div class="muted">اختيار بعناية وثبات في الجودة.</div>
           </div>
         </div>
 
-        <div class="card col-4">
-          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1400&q=80')"></div>
-          <div class="pad">
-            <b>طحن حسب الطلب</b>
-            <div class="muted">حسب طريقة التحضير المفضلة.</div>
-          </div>
-        </div>
-
-        <div class="card col-4">
-          <div class="thumb" style="--img:url('https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1400&q=80')"></div>
-          <div class="pad">
-            <b>تجربة إسبريسو</b>
-            <div class="muted">نفس ثابت… كل كوب.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="muted" style="font-size:12px;margin-top:10px;">
-        * تقدر تستبدل صور المعرض بصور حقيقية من المحل عن طريق رفعها للريبو وتغيير الروابط.
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="titlebar">
-        <div>
-          <h2>أسئلة شائعة</h2>
-          <p>إجابات سريعة للعملاء.</p>
-        </div>
-        <span class="kicker">FAQ</span>
-      </div>
-
-      <div class="card">
-        <div class="pad">
-          <details open>
-            <summary>إزاي أختار درجة التحميص المناسبة؟</summary>
-            <p>لو بتحب طعم أخف واوضح: فاتح. توازن ممتاز: متوسط. طعم قوي وثقيل: غامق.</p>
-          </details>
-          <details>
-            <summary>هل في طحن حسب الطلب؟</summary>
-            <p>أيوه. قول لنا طريقة التحضير (تركي/إسبريسو/فلتر) وهنظبط الطحن المناسب.</p>
-          </details>
-          <details>
-            <summary>مواعيد العمل؟</summary>
-            <p>يومياً من 6 صباحاً إلى 1 ليلاً.</p>
-          </details>
-        </div>
       </div>
 
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact">
+  <footer id="contact">
     <div class="container">
-      <div class="titlebar">
-        <div>
-          <h2>التواصل</h2>
-          <p>يسعدنا خدمتك.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div style="font-weight:900;">بن الحفناوي • المقطم – الهضبة الوسطى</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a class="btn gold" href="tel:01122296566">📞 01122296566</a>
+          <a class="btn" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
         </div>
-        <span class="kicker">Contact</span>
-      </div>
-
-      <div class="grid">
-        <div class="card col-6">
-          <div class="pad">
-            <b>بيانات المحل</b>
-            <div class="muted" style="margin-top:8px;">📍 المقطم - الهضبة الوسطى</div>
-            <div class="muted">🕒 من 6 صباحاً إلى 1 ليلاً</div>
-            <div class="muted">📞 <a href="tel:01122296566">01122296566</a></div>
-
-            <div class="contact-box">
-              <a class="btn primary" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
-              <a class="btn gold" href="tel:01122296566">اتصال</a>
-            </div>
-
-            <div class="muted" style="font-size:12px;margin-top:10px;">
-              لو تحب نضيف خريطة جوجل، ابعتلي لينك المكان أو الإحداثيات.
-            </div>
-          </div>
-        </div>
-
-        <div class="card col-6">
-          <div class="pad">
-            <b>اطلب هوية كاملة</b>
-            <div class="muted" style="margin-top:8px;">
-              نقدر نضيف لاحقاً: صفحة منتجات، صفحة عروض، صفحة مقالات عن البن والتحميص، وقائمة منسدلة للأصناف.
-            </div>
-            <ul class="list muted">
-              <li>قائمة أصناف (بدون أسعار أو بأسعار لاحقاً).</li>
-              <li>قسم فيديوهات متعدد (7 ثواني لكل فيديو).</li>
-              <li>زر طلب سريع / واتساب مباشر.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-row">
-        <div>© <span id="y"></span> بن الحفناوي — خبراء القهوة</div>
-        <div>المقطم - الهضبة الوسطى • 01122296566</div>
       </div>
     </div>
   </footer>
 
-  <a class="float-wa" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
+  <!-- WhatsApp Floating -->
+  <a class="wa" href="https://wa.me/201122296566" target="_blank" rel="noopener">واتساب</a>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener("click",(e)=>{
-        const id=a.getAttribute("href");
-        if(!id || id==="#") return;
-        const el=document.querySelector(id);
-        if(!el) return;
-        e.preventDefault();
-        el.scrollIntoView({behavior:"smooth", block:"start"});
-      });
-    });
-  </script>
 </body>
 </html>
-
